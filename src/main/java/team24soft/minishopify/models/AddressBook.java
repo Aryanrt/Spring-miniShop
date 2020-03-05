@@ -11,10 +11,14 @@ public class AddressBook {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER )
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<BuddyInfo> agenda;
 
     public AddressBook(){
+        this.agenda = new ArrayList<BuddyInfo>();
+    }
+    public AddressBook(long id){
+        this.id = id;
         this.agenda = new ArrayList<BuddyInfo>();
     }
 

@@ -18,14 +18,25 @@ public class AddressBookRestController {
     BuddyInfoRepository buddyInfoRepository;
 
     @GetMapping("/createBook")
-    public AddressBook createBook(){
+    public AddressBook createBook(@RequestParam(name="id", required = false,defaultValue = "1") long id){
 
-        AddressBook book = new AddressBook();
+        AddressBook book = new AddressBook(id);
 
         addressBookRepository.save(book);
+        System.out.println("id is: " +book.getId());
+        AddressBook book2 = addressBookRepository.findById(id);
+        System.out.println("id in repository is: " +book2.getId());
+        return book;
+    }
+    @GetMapping("/addressBook")
+    public AddressBook addressBook(@RequestParam(name="id", required = false,defaultValue = "1") long id){
+
+        AddressBook book = addressBookRepository.findById(id);
+        System.out.println(book.getId());
 
         return book;
     }
+
 
     @GetMapping("/addBuddy")
     public AddressBook addBuddy(@RequestParam(name="id", required = false,defaultValue = "1") long id,
@@ -33,6 +44,7 @@ public class AddressBookRestController {
                                 @RequestParam(name= "lastName", required = false,defaultValue = "") String lastName,
                                 @RequestParam(name= "phone", required = false,defaultValue = "") String phone){
 
+        //if()
         AddressBook book = addressBookRepository.findById(id);
 
         BuddyInfo buddy = new BuddyInfo(firstName,lastName,phone);
@@ -47,7 +59,7 @@ public class AddressBookRestController {
 
     @GetMapping("/removeBuddy")
     public AddressBook removeBuddy(@RequestParam(name="bookId", required = false,defaultValue = "1") long idBook,
-                                @RequestParam(name="firstName", required = false,defaultValue = "") long idBuddy){
+                                   @RequestParam(name="firstName", required = false,defaultValue = "") long idBuddy){
 
         AddressBook book = addressBookRepository.findById(idBook);
 
