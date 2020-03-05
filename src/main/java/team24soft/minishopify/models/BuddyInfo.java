@@ -16,7 +16,7 @@ public class BuddyInfo {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    protected BuddyInfo(){
+    public BuddyInfo(){
 
     }
 
