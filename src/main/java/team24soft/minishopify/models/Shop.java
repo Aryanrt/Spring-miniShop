@@ -7,12 +7,11 @@ import java.util.List;
 public class Shop {
 
     public String name;
+    public String category;
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    public List<Category> categories;
+    public List<Product> products;
 
-//    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-//    public List<Product> products;
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     public long id;
