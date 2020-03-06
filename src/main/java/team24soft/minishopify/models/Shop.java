@@ -7,6 +7,7 @@ import java.util.List;
 public class Shop {
 
     public String name;
+    public String category;
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public List<Product> products;
@@ -15,4 +16,42 @@ public class Shop {
     @GeneratedValue(strategy= GenerationType.AUTO)
     public long id;
 
+    protected Shop(){}
+
+    public Shop(String name, String category){
+        this.name = name;
+        this.category = category;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

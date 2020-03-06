@@ -7,6 +7,14 @@
 <body>
     <h1>Mini-Shopify</h1>
 
+    <h2>Create a store</h2>
+    <form action="#" th:action="@{/createStore}" method="get">
+        <p>Name: <input type="text" th:name="name" /></p>
+        <p>Category: <input type="text" th:name="category" /></p>
+
+        <p><input type="submit" value="Create Store"/></p>
+    </form>
+
 
 
 
