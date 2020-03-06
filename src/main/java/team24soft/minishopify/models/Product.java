@@ -12,9 +12,12 @@ public class Product {
     private String description; //description of the product
     private int price; //price of the product
 
+
+    private int inventoryNumber;
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long inventoryNumber;
+    private Long id;
 
     public Product(){
 
@@ -50,12 +53,21 @@ public class Product {
         this.price = price;
     }
 
-    public Long getInventoryNumber() {
+    public int getInventoryNumber() {
         return inventoryNumber;
     }
 
-    public void setInventoryNumber(Long inventoryNumber) {
+    public void setInventoryNumber(int inventoryNumber) {
         this.inventoryNumber = inventoryNumber;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
 }

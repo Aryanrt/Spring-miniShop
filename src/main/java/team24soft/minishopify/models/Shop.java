@@ -1,6 +1,7 @@
 package team24soft.minishopify.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,13 +15,14 @@ public class Shop {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    public long id;
+    public Long id;
 
     protected Shop(){}
 
     public Shop(String name, String category){
         this.name = name;
         this.category = category;
+        this.products = new ArrayList<Product>();
     }
 
     public String getName() {
@@ -47,11 +49,19 @@ public class Shop {
         this.products = products;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void addProduct(Product product){
+        this.products.add(product);
+    }
+
+    public void removeProduct(Product product){
+        this.products.remove(product);
     }
 }

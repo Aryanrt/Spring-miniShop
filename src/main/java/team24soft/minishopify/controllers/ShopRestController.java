@@ -1,92 +1,30 @@
-package team24soft.minishopify.controllers;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.view.RedirectView;
-import team24soft.minishopify.models.Shop;
-import team24soft.minishopify.repositories.ProductRepository;
-import team24soft.minishopify.repositories.ShopRepository;
-
-public class ShopRestController {
-
+//package team24soft.minishopify.controllers;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.servlet.view.RedirectView;
+//import team24soft.minishopify.models.Shop;
+//import team24soft.minishopify.repositories.ShopRepository;
+//
+//@RestController()
+//public class ShopRestController {
+//
 //    @Autowired
 //    ShopRepository shopRepository;
-//    @Autowired
-//    ProductRepository productRepository;
-//
-//    @GetMapping("/createBook")
-//    public Shop createShop(@RequestParam(name="id", required = false,defaultValue = "1") long id){
-//
-//        Shop shop = new Shop(id);
-//
-//        addressBookRepository.save(book);
-//        System.out.println("id is: " +book.getId());
-//        AddressBook book2 = addressBookRepository.findById(id);
-//        System.out.println("id in repository is: " +book2.getId());
-//        return book;
-//    }
-//    @GetMapping("/addressBook")
-//    public AddressBook addressBook(){
-//
-//        AddressBook book = addressBookRepository.findById(1);
-//        if(addressBookRepository.findById(1) == null)
-//            System.out.println("nullllllllllllll");
-//        System.out.println(book.getId());
 //
 //
-//        //return "redirect:addressBook.html";
-//        return book;
-//        //return new RedirectView("addressBook.html");
+//    @GetMapping("/createShop")
+//    public Shop createBook(@RequestParam(name="name", required = false,defaultValue = "name") String name,
+//                           @RequestParam(name="category", required = false,defaultValue = "category") String category){
+//
+//        Shop shop = new Shop(name, category);
+//
+//        shopRepository.save(shop);
+//
+//        return shop;
 //    }
 //
 //
-//    @GetMapping("/addBuddy")
-//    public RedirectView addBuddy(@RequestParam(name="name", required = false,defaultValue = "1") String name,
-//                                 @RequestParam(name="quantity", required = false,defaultValue = "") String quantity,
-//                                 @RequestParam(name= "category", required = false,defaultValue = "") String category){
-//
-//
-//        AddressBook book2 = addressBookRepository.findById(1);
-//        if(book2 != null)
-//            System.out.println("heeeere: " +book2.getId());
-//
-//        AddressBook book;
-//        if(addressBookRepository.findById(1) == null)
-//            book = new AddressBook(1);
-//        else
-//            book = addressBookRepository.findById(1);
-//
-//        addressBookRepository.save(book);
-//        System.out.println("id is: " +book.getId());
-//        book2 = addressBookRepository.findById(1);
-//        System.out.println("id in repository is: " +book2.getId());
-//
-//        BuddyInfo buddy = new BuddyInfo(name,quantity,category);
-//
-//        book.addBuddy(buddy);
-//
-//        buddyInfoRepository.save(buddy);
-//        addressBookRepository.save(book);
-//
-//        //return "redirect: /index.html";
-//        return new RedirectView("");
-//
-//    }
-//
-//    @GetMapping("/removeBuddy")
-//    public AddressBook removeBuddy(@RequestParam(name="bookId", required = false,defaultValue = "1") long idBook,
-//                                   @RequestParam(name="firstName", required = false,defaultValue = "") long idBuddy){
-//
-//        AddressBook book = addressBookRepository.findById(idBook);
-//
-//        BuddyInfo buddy = buddyInfoRepository.findById(idBuddy);
-//
-//        book.removeBuddy(buddy);
-//
-//        addressBookRepository.save(book);
-//
-//        return book;
-//    }
-
-}
+//}

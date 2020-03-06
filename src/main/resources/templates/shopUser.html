@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title th:text = "${shop.name}"></title>
+</head>
+<body>
+<h1 th:text = "'Welcome to ' +${shop.name}"></h1>
+
+<h2>User's view</h2>
+
+<h3>List of Products</h3>
+<table border = 1>
+    <thead>
+    <tr>
+        <th>Name</th><th>Description</th><th>Price</th><th>Quantity</th><th>Cart</th>
+    </tr>
+    </thead>
+    <tbody th:each="product: ${shop.products}">
+    <tr>
+        <td th:text="${product.title}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.price}"></td>
+        <td ><input type = "number" value="0"/></td>
+        <td ><input  type="button" value="Add to cart" /></td>
+    </tr>
+    </tbody>
+
+</table>
+
+
+
+<p><a href="/">Main page</a></p>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>shop</title>
+</head>
+<body>
+<h1>Mini-Shopify</h1>
+
+<h2>Create my store</h2>
+<form action="/createShop" method="post">
+    <div>
+        <span>
+            Name: <input type="text" name="name" />
+        </span>
+        <span>
+            Category: <input type="text" name="category" />
+        </span>
+        <span>
+            <input type="submit" value="Create Store"/>
+        </span>
+    </div>
+
+</form>
+
+<h2>Go to my store</h2>
+<form action="/getManagerShop" method="get">
+    <div>
+        <span>
+            ID: <input type="text" name="id" />
+        </span>
+        <span>
+            <input type="submit" value="Go to my store"/>
+        </span>
+    </div>
+
+</form>
+
+<p><a href="/">Main page</a></p>
+
+</body>
+</html>

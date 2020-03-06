@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import team24soft.minishopify.models.Product;
 
 
-@RepositoryRestResource(collectionResourceRel = "products", path = "prodcuts")
+@RepositoryRestResource(collectionResourceRel = "products", path = "products")
 public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
     Product findByTitle(String title);
     Product findByPrice(int price);

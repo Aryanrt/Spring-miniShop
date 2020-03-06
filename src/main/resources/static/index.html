@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini-Shopify</title>
+</head>
+<body>
+    <h1>Mini-Shopify</h1>
+
+    <div><a href = "manageShop.html">Manage my shop</a></div>
+
+    <br>
+    <span>Go to shop:</span>
+    <span>
+        <form action="/getBuyerShop" method="get">
+            <div>
+            <span>
+                name: <input type="text" name="name" />
+            </span>
+                <span>
+                <input type="submit" value="Go to store"/>
+            </span>
+            </div>
+
+        </form>
+    </span>
+    <br>
+    <br>
+    <br>
+
+    <div id = "shops-container">
+        Place holder to show shops available so users can go to them in one click
+    </div>
+
+</body>
+</html>
