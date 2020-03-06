@@ -74,9 +74,9 @@ public class BuddyInfo {
     @Override
     public String toString() {
         return "BuddyInfo [" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phone='" + phone + '\'' +
+                "Name='" + firstName + '\'' +
+                ", Quantity='" + lastName + '\'' +
+                ", Category='" + phone + '\'' +
                 ", id=" + id +
                 ']';
     }

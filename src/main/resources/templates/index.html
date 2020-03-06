@@ -8,24 +8,24 @@
     <h1>Mini-Shopify</h1>
     <p>Hello there!</p>
     <div>THIS IS JUST A TEST</div><h2>Retrive a book</h2>
-    <form action="#" th:action="@{/addressBook}" method="get">
-        <p>Id: <input type="text" th:name="id" /></p>
-        <p><input type="submit" value="Get Book"/></p>
-    </form>
 
+    <form action="#" th:action="@{/addressBook}" method="get">
+        <p><input type="submit" value="Show Card"/></p>
+    </form>
+<!--
     <h2>Create a book</h2>
     <form action="#" th:action="@{/createBook}" method="get">
         <p>Id: <input type="text" th:name="id" /></p>
         <p><input type="submit" value="Create Book"/></p>
     </form>
-
-    <h2>Add a buddy</h2>
+-->
+    <h2>Add Product:</h2>
     <form action="#" th:action="@{/addBuddy}" method="get">
-        <p>AddressBook ID: <input type="text" th:name="id" /></p>
-        <p>First: <input type="text" th:name="firstName" /></p>
-        <p>Last: <input type="text" th:name="lastName" /></p>
-        <p>phone: <input type="text" th:name="phone" /></p>
-        <p><input type="submit" value="Add buddy"/></p>
+        <p>Name: <input type="text" th:name="name" /></p>
+        <p>Quantity: <input type="text" th:name="quantity" /></p>
+        <p>Category: <input type="text" th:name="category" /></p>
+     <!--   <p>phone: <input type="text" th:name="phone" /></p> -->
+        <p><input type="submit" value="Add Product"/></p>
     </form>
 </body>
 </html>
