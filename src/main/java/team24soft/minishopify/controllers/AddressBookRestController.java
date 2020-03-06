@@ -1,6 +1,5 @@
 package team24soft.minishopify.controllers;
 
-import org.springframework.web.servlet.view.RedirectView;
 import team24soft.minishopify.models.AddressBook;
 import team24soft.minishopify.models.BuddyInfo;
 import team24soft.minishopify.repositories.AddressBookRepository;
@@ -30,51 +29,32 @@ public class AddressBookRestController {
         return book;
     }
     @GetMapping("/addressBook")
-    public AddressBook addressBook(){
+    public AddressBook addressBook(@RequestParam(name="id", required = false,defaultValue = "1") long id){
 
-        AddressBook book = addressBookRepository.findById(1);
-        if(addressBookRepository.findById(1) == null)
-            System.out.println("nullllllllllllll");
+        AddressBook book = addressBookRepository.findById(id);
         System.out.println(book.getId());
 
-
-        //return "redirect:addressBook.html";
         return book;
-        //return new RedirectView("addressBook.html");
     }
 
 
     @GetMapping("/addBuddy")
-    public RedirectView addBuddy(@RequestParam(name="name", required = false,defaultValue = "1") String name,
-                                 @RequestParam(name="quantity", required = false,defaultValue = "") String quantity,
-                                 @RequestParam(name= "category", required = false,defaultValue = "") String category){
+    public AddressBook addBuddy(@RequestParam(name="id", required = false,defaultValue = "1") long id,
+                                @RequestParam(name="firstName", required = false,defaultValue = "") String firstName,
+                                @RequestParam(name= "lastName", required = false,defaultValue = "") String lastName,
+                                @RequestParam(name= "phone", required = false,defaultValue = "") String phone){
 
+        //if()
+        AddressBook book = addressBookRepository.findById(id);
 
-        AddressBook book2 = addressBookRepository.findById(1);
-        if(book2 != null)
-            System.out.println("heeeere: " +book2.getId());
-
-        AddressBook book;
-        if(addressBookRepository.findById(1) == null)
-            book = new AddressBook(1);
-        else
-            book = addressBookRepository.findById(1);
-
-        addressBookRepository.save(book);
-        System.out.println("id is: " +book.getId());
-        book2 = addressBookRepository.findById(1);
-        System.out.println("id in repository is: " +book2.getId());
-
-        BuddyInfo buddy = new BuddyInfo(name,quantity,category);
+        BuddyInfo buddy = new BuddyInfo(firstName,lastName,phone);
 
         book.addBuddy(buddy);
 
         buddyInfoRepository.save(buddy);
         addressBookRepository.save(book);
 
-        //return "redirect: /index.html";
-        return new RedirectView("");
-
+        return book;
     }
 
     @GetMapping("/removeBuddy")
