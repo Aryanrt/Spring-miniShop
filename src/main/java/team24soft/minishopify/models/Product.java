@@ -10,7 +10,8 @@ import javax.persistence.Id;
 public class Product {
     private String title; //name given to product
     private String description; //description of the product
-    private int price; //price of the product
+    private long quantity; //Quantity of the product
+    private long price; //price of the product
 
 
     private int inventoryNumber;
@@ -23,11 +24,14 @@ public class Product {
 
     }
 
+    //Contructor
     public Product(String title, String description, int price) {
         this.title = title;
         this.description = description;
+        this.quantity = quantity;
         this.price = price;
     }
+
 
     public String getTitle() {
         return title;
@@ -45,7 +49,15 @@ public class Product {
         this.description = description;
     }
 
-    public int getPrice() {
+    public long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(long quantity) {
+        this.quantity = quantity;
+    }
+
+    public long getPrice() {
         return price;
     }
 

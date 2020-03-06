@@ -23,6 +23,7 @@ public class shopMVCController {
     @Autowired
     ProductRepository productRepository;
 
+    // Create a Shop
     @PostMapping("/createShop")
     public String createBook(@ModelAttribute Shop shop){
 
@@ -31,7 +32,7 @@ public class shopMVCController {
         return "shopManager";
     }
 
-    //
+    // Re
     @GetMapping("/getManagerShop")
     public String getManagerShop(@RequestParam(name="id", required = false, defaultValue = "1") long id, Model model){
 

@@ -7,8 +7,8 @@ import java.util.List;
 @Entity
 public class Shop {
 
-    public String name;
-    public String category;
+    public String name; //Name of the Shop
+    public String category; //Category of the Shop
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public List<Product> products;
