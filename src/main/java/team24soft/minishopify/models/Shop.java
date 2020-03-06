@@ -11,8 +11,8 @@ public class Shop {
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public List<Category> categories;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    public List<Product> products;
+//    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//    public List<Product> products;
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     public long id;
