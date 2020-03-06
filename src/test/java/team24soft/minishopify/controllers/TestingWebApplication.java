@@ -1,4 +1,4 @@
-package access;
+package team24soft.minishopify.controllers;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -24,7 +24,7 @@ public class TestingWebApplication {
 
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get("/manageShop")).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Name:")));
+        this.mockMvc.perform(get("http://localhost:8081/")).andExpect(status().isOk())
+                .andExpect(content().string(containsString("name")));
     }
 }
