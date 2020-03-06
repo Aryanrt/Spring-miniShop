@@ -7,7 +7,6 @@ import java.util.List;
 public class Shop {
 
     public String name;
-    public String category;
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public List<Product> products;
