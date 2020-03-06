@@ -31,6 +31,7 @@ public class shopMVCController {
         return "shopManager";
     }
 
+    //
     @GetMapping("/getManagerShop")
     public String getManagerShop(@RequestParam(name="id", required = false, defaultValue = "1") long id, Model model){
 
@@ -52,7 +53,7 @@ public class shopMVCController {
 
         Product product = new Product(name,description,price);
 
-        product.setInventoryNumber(inventory);
+       // product.setInventoryNumber(inventory);
 
         Shop shop = shopRepository.findById(id);
 
