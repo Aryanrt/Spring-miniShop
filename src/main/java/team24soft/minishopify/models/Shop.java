@@ -1,7 +1,6 @@
 package team24soft.minishopify.models;
 
 import javax.persistence.*;
-import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -20,7 +19,6 @@ public class Shop {
     protected Shop(){}
 
     public Shop(String name, String category){
-        products = new LinkedList<Product>();
         this.name = name;
         this.category = category;
     }
@@ -55,9 +53,5 @@ public class Shop {
 
     public void setId(long id) {
         this.id = id;
-    }
-    public void addProduct(Product product)
-    {
-        this.products.add(product);
     }
 }

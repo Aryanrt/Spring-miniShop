@@ -18,7 +18,7 @@
 
 
 
-    <form action="#" th:action="@{/showShop}" method="get">
+    <form action="#" th:action="@{/addressBook}" method="get">
         <p><input type="submit" value="Show Cart"/></p>
     </form>
 <!--
@@ -29,11 +29,10 @@
     </form>
 -->
     <h2>Add Product:</h2>
-    <form action="#" th:action="@{/addProduct}" method="get">
+    <form action="#" th:action="@{/addBuddy}" method="get">
         <p>Name: <input type="text" th:name="name" /></p>
-        <p>Description: <input type="text" th:name="quantity" /></p>
         <p>Quantity: <input type="text" th:name="quantity" /></p>
-        <p>Price: <input type="text" th:name="price" /></p>
+        <p>Category: <input type="text" th:name="category" /></p>
      <!--   <p>phone: <input type="text" th:name="phone" /></p> -->
         <p><input type="submit" value="Add Product"/></p>
     </form>

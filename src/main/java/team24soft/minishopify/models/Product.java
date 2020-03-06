@@ -10,8 +10,7 @@ import javax.persistence.Id;
 public class Product {
     private String title; //name given to product
     private String description; //description of the product
-    private long quantity; //Quantity of the product
-    private long price; //price of the product
+    private int price; //price of the product
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -21,10 +20,9 @@ public class Product {
 
     }
 
-    public Product(String title, String description, int quantity, long price) {
+    public Product(String title, String description, int price) {
         this.title = title;
         this.description = description;
-        this.quantity = quantity;
         this.price = price;
     }
 
@@ -44,15 +42,7 @@ public class Product {
         this.description = description;
     }
 
-    public long getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(long quantity) {
-        this.quantity = quantity;
-    }
-
-    public long getPrice() {
+    public int getPrice() {
         return price;
     }
 
