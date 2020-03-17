@@ -15,6 +15,7 @@
     <p>Product name: <input th:name="name"/></p>
     <p>Product description: <input th:name="description"/></p>
     <p>Product price :<input th:name="price"/></p>
+    <p>Product Quantity :<input th:name="quantity"/></p>
 <!--    <p>Number of products :<input th:name="inventory"/></p>-->
 
     <p><input type="submit" value="Add Product"/></p>
@@ -31,8 +32,8 @@
          <tr>
              <td th:text="${product.title}"></td>
              <td th:text="${product.description}"></td>
-             <td th:text="${product.price}"></td>
-             <td th:text="${product.inventoryNumber}"></td>
+             <td th:text="${product.price}">$</td>
+             <td th:text="${product.quantity}"></td>
          </tr>
     </tbody>
 

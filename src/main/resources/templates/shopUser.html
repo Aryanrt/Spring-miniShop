@@ -13,23 +13,28 @@
 <table border = 1>
     <thead>
     <tr>
-        <th>Name</th><th>Description</th><th>Price</th><th>Quantity</th><th>Cart</th>
+        <th>Shop Name</th><th>Product Title</th><th>Description</th><th>Price</th><th>Quantity</th><th>Cart</th>
     </tr>
     </thead>
+
     <tbody th:each="product: ${shop.products}">
     <tr>
-        <td th:text="${product.title}"></td>
-        <td th:text="${product.description}"></td>
-        <td th:text="${product.price}"></td>
-        <td ><input type = "number" value="0"/></td>
-        <td ><input  type="button" value="Add to cart" /></td>
+        <form  action="#" th:action="@{/addToCart}" method="get">
+          <!--  <td th:text="${shop.name}" ></td> -->
+            <td> <input th:name="name" th:value="${shop.name}" ></td>
+            <td> <input th:name="title" th:value="${product.title}" ></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.price}"></td>
+            <td ><input th:name="number" th:value="0"/></td>
+            <td ><input  type="submit" value="Add to Cart" /></td>
+        </form>
     </tr>
     </tbody>
-
 </table>
 
-
-
+<form action="/viewCart" method="get">
+<td ><input  type="submit" value="View Your Cart" /></td>
+</form>
 <p><a href="/">Main page</a></p>
 
 </body>

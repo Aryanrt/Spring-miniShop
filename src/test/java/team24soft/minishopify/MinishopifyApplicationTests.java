@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class MinishopifyApplicationTests {
 
     @Test
-    void contextLoads() {
+    void tests() {
+       // new TestAddToCardController();
     }
 
 }

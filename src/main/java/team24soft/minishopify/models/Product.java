@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Product {
@@ -12,6 +14,7 @@ public class Product {
     private String description; //description of the product
     private long quantity; //Quantity of the product
     private long price; //price of the product
+
 
 
     private int inventoryNumber;
@@ -25,10 +28,15 @@ public class Product {
     }
 
     //Contructor
-    public Product(String title, String description, int price) {
+    public Product(String title, String description, long price, long quantity) {
         this.title = title;
         this.description = description;
         this.quantity = quantity;
+        this.price = price;
+    }
+    public Product(String title, String description, long price) {
+        this.title = title;
+        this.description = description;
         this.price = price;
     }
 
