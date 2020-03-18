@@ -24,7 +24,6 @@ public class TestingWebApplication {
 
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get("http://localhost:8081/")).andExpect(status().isOk())
-                .andExpect(content().string(containsString("name")));
+        this.mockMvc.perform(get("http://localhost:8081/")).andExpect(status().isOk());
     }
 }
