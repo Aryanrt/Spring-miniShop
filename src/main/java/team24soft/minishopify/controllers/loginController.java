@@ -36,6 +36,8 @@ public class loginController {
 
         if (userRepository.findByUsername(username) == null) {
 
+            model.addAttribute("msg", "User does not exist, register");
+
             return "index";
         }
         if (userRepository.findByUsername(username).getPassword().equals(password)) {
@@ -46,7 +48,7 @@ public class loginController {
             return "welcome";
         }
 
-
+        model.addAttribute("msg", "Either password or username are wrong");
 
         return "index";
     }
@@ -58,7 +60,7 @@ public class loginController {
                            Model model){
 
         if(! password.equals(passwordRepeated)) {
-
+            model.addAttribute("msg", "Passwords do not match");
             return "registration";
         }
 
