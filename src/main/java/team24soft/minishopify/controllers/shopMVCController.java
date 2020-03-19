@@ -3,7 +3,6 @@ package team24soft.minishopify.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,12 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import team24soft.minishopify.models.Cart;
 import team24soft.minishopify.models.Product;
 import team24soft.minishopify.models.Shop;
-import team24soft.minishopify.repositories.CartRepository;
-import team24soft.minishopify.repositories.ProductRepository;
-import team24soft.minishopify.repositories.ShopRepository;
-
-import javax.validation.Valid;
-import java.time.Period;
+import team24soft.minishopify.models.User;
+import team24soft.minishopify.repositories.*;
 
 @Controller()
 public class shopMVCController {
@@ -29,6 +24,9 @@ public class shopMVCController {
 
     @Autowired
     CartRepository cartRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     // Create a Shop
     @PostMapping("/createShop")
@@ -180,6 +178,42 @@ public class shopMVCController {
 
         return "cart";
     }
+    @GetMapping("/login")
+    public String login(@RequestParam(name="username", required = true) String username,
+                        @RequestParam(name="password", required = true) String password, Model model) {
+
+        if (userRepository.findByUsername(username) == null) {
+            return "index";
+        }
+        if (userRepository.findByUsername(username).getPassword().equals(password)) {
+            User user = userRepository.findByUsername(username);
+            user.setOnline(true);
+            userRepository.save(user);
+            return "welcome";
+        }
+        return "index";
+    }
+    @GetMapping("/register")
+    public String register(@RequestParam(name="username", required = true) String username,
+                           @RequestParam(name="password", required = true) String password,
+                           @RequestParam(name="passwordRepeated", required = true) String passwordRepeated, Model model){
+
+        User user = new User(username, password);
+        user.setOnline(true);
+        userRepository.save(user);
+
+        return "welcome";
+    }
+    @GetMapping("/signOut")
+    public String signOut(Model model){
+
+        User user = userRepository.findByIsOnline(true);
+        user.setOnline(false);
+        userRepository.save(user);
+
+        return "index";
+    }
+
 
 
 }

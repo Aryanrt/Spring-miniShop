@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Manager extends User {
+public class Manager {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
