@@ -9,54 +9,28 @@
 <body>
 <div id="content">
     <img id="main-image" title= "Mini-Shopify" alt= "Mini-Shopify" src="/images/main.png">
-    <div>
-        <span class="link-left">
-            <form action="/goShopping"  method="get">
-                <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
-                <td ><input  type="submit" value="Go Shopping" /></td>
-            </form>
-        </span>
-        <span class="link-right">
-            <form action="/goManaging"  method="get">
-                <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
-                <td ><input  type="submit" value="Manage Your Store" /></td>
-            </form>
-        </span>
-    </div>
-    <form action="/signOut"  method="get">
-        <!--<input name="userId" value="${user.id}"  > -->
-        <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
-        <td ><input  type="submit" value="Sign Out" /></td>
+
+    <form action="/goShopping"  method="get">
+        <input hidden th:name="userId" th:value="${user.id}"/>
+        <input  type="submit" value="Go Shopping" />
     </form>
+
+
+
+    <form action="/goManaging"  method="get">
+        <input hidden th:name="userId" th:value="${user.id}"/>
+        <input  type="submit" value="Create or Manage Your Store" />
+    </form>
+
+
+    <div class="button sign-out">
+        <form action="/signOut"  method="get">
+            <!--<input name="userId" value="${user.id}"  > -->
+            <input hidden th:name="userId" th:value="${user.id}"/>
+            <input  type="submit" value="Sign Out" />
+        </form>
+    </div>
 </div>
-
-
-<!--    <h1>Mini-Shopify</h1>-->
-
-<!--    <div><a href = "manager.html">Continue as Seller</a></div>-->
-
-<!--    <br>-->
-<!--    <span>Go to shop:</span>-->
-<!--    <span>-->
-<!--        <form action="/getBuyerShop" method="get">-->
-<!--            <div>-->
-<!--            <span>-->
-<!--                name: <input type="text" name="name" />-->
-<!--            </span>-->
-<!--                <span>-->
-<!--                <input type="submit" value="Go to store"/>-->
-<!--            </span>-->
-<!--            </div>-->
-
-<!--        </form>-->
-<!--    </span>-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <br>-->
-
-<!--    <div id = "shops-container">-->
-<!--        Place holder to show shops available so users can go to them in one click-->
-<!--    </div>-->
 
 </body>
 </html>

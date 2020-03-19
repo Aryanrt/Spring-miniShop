@@ -202,45 +202,6 @@ public class shopMVCController {
 
         return "cart";
     }
-    @GetMapping("/login")
-    public String login(@RequestParam(name="username", required = true) String username,
-                        @RequestParam(name="password", required = true) String password, Model model) {
-
-        if (userRepository.findByUsername(username) == null) {
-            return "index";
-        }
-        if (userRepository.findByUsername(username).getPassword().equals(password)) {
-            User user = userRepository.findByUsername(username);
-            user.setOnline(true);
-            userRepository.save(user);
-            model.addAttribute("user", user);
-            return "welcome";
-        }
-        return "index";
-    }
-    @GetMapping("/register")
-    public String register(@RequestParam(name="username", required = true) String username,
-                           @RequestParam(name="password", required = true) String password,
-                           @RequestParam(name="passwordRepeated", required = true) String passwordRepeated, Model model){
-
-        if(! password.equals(passwordRepeated))
-            return "../public/registration";
-        User user = new User(username, password);
-        user.setOnline(true);
-        userRepository.save(user);
-        model.addAttribute("user", user);
-
-        return "welcome";
-    }
-    @GetMapping("/signOut")
-    public String signOut(@RequestParam(name="userId", required = true) long userId, Model model){
-
-        User user = userRepository.findById(userId);
-        user.setOnline(false);
-        userRepository.save(user);
-
-        return "index";
-    }
 
     @GetMapping("/goShopping")
     public String goShopping(@RequestParam(name="userId", required = true) long userId, Model model){
