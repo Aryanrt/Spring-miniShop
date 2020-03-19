@@ -2,51 +2,64 @@
 <html lang="en"  xmlns:th="https://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
-    <title>shop</title>
+    <title>Mini-Shopify</title>
+    <link rel = "icon" href ="/images/icon.png" type = "image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 <body>
-<h1>Mini-Shopify</h1>
-
-<h2>Create my store</h2>
-<form action="/createShop" method="get">
+<header class="header">
     <div>
+        <span><a th:href="@{/welcome(userId=${user.id})}"><img class="logo" title="Home" alt="shopify-logo" src="images/logo.png"></a></span>
+    </div>
+</header>
+<div class="main-container">
+    <section>
+        <h1>Mini-Shopify</h1>
+
+        <h2>Create my store</h2>
+        <form action="/createShop" method="get">
+            <div>
         <span>
             Name: <input type="text" name="name" />
         </span>
-        <span>
+                <span>
             Category: <input type="text" name="category" />
         </span>
-        <span>
+                <span>
         <input hidden th:name="userId" th:value="${user.id}"/>
         </span>
-        <span>
+                <span>
             <input type="submit" value="Create Store"/>
         </span>
-    </div>
+            </div>
 
-</form>
+        </form>
 
-<h2>Go to my store</h2>
-<form action="/getManagerShop" method="get">
-    <div>
+        <h2>Go to my store</h2>
+        <form action="/getManagerShop" method="get">
+            <div>
         <span>
             ID: <input type="text" name="id" />
         </span>
-        <span>
+                <span>
         <input hidden th:name="userId" th:value="${user.id}"/>
         </span>
-        <span>
+                <span>
             <input type="submit" value="Go to my store"/>
         </span>
-    </div>
+            </div>
 
-</form>
-<form action="/signOut" method="get">
-    <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
-    <td ><input  type="submit" value="Sign Out" /></td>
-</form>
+        </form>
 
-<p><a href="/public">Main page</a></p>
+        <div class="buttons-back-container">
+            <span><a th:href="@{/welcome(userId=${user.id})}"><button>Go Back</button></a></span>
+            <span><a th:href="@{/signOut(userId=${user.id})}"><button>Sign Out</button></a></span>
+        </div>
+    </section>
+</div>
 
+<footer class="footer">
+    <span class="developed-by">Developed by <em><b>Team 24</b></em></span>
+</footer>
 </body>
 </html>

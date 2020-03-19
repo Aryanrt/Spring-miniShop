@@ -2,38 +2,47 @@
 <html lang="en"  xmlns:th="https://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
-    <title th:text = "Cart"></title>
+    <title>Mini-Shopify</title>
+    <link rel = "icon" href ="/images/icon.png" type = "image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 <body>
-<!-- <h1 th:text = "Welcome to ur cart"></h1> -->
+<header class="header">
+    <div>
+        <span><a th:href="@{/welcome(userId=${user.id})}"><img class="logo" title="Home" alt="shopify-logo" src="images/logo.png"></a></span>
+    </div>
+</header>
+<div class = "main-container">
+    <section>
+        <h2>This is your Cart</h2>
+        <table class="table shop-user-table">
+            <thead>
+            <tr class="row-header">
+                <th>Product Name</th><th>Description</th><th>Price</th><th>Quantity</th>
+            </tr>
+            </thead>
+            <tbody >
+            <tr class="row-body" th:each="product: ${cart.products}">
+                <td class ="cell-body" th:text="${product.title}"></td>
+                <td class ="cell-body" th:text="${product.description}"></td>
+                <td class ="cell-body" th:text="${product.price}"></td>
+                <td class ="cell-body" th:text="${product.quantity}"></td>
+            </tr>
+            </tbody>
 
-<h2>This is your Cart</h2>
-<table border = 1>
-    <thead>
-    <tr>
-        <th>Name</th><th>Description</th><th>Price</th><th>Quantity</th>
-    </tr>
-    </thead>
-    <tbody th:each="product: ${cart.products}">
-    <tr>
-   <!--     <form  action="#" th:action="@{/RemoveFromCart}" method="get"> -->
-        <td th:text="${product.title}"></td>
-        <td th:text="${product.description}"></td>
-        <td th:text="${product.price}"></td>
-        <td th:text="${product.quantity}"></td>
-        <!--<td ><input  type="submit" value="Remove from Cart" /></td>
-        </form>-->
+        </table>
 
-    </tr>
-    </tbody>
+        <div class="buttons-back-container">
+            <span><a th:href="@{/shopList(userId=${user.id})}"><button>Go Back</button></a></span>
+            <span><a th:href="@{/signOut(userId=${user.id})}"><button>Sign Out</button></a></span>
+        </div>
 
-</table>
+    </section>
+</div>
 
-<p><a href="/">Main page</a></p>
-<form action="/signOut" method="get">
-    <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
-    <td ><input  type="submit" value="Sign Out" /></td>
-</form>
 
+<footer class="footer">
+    <span class="developed-by">Developed by <em><b>Team 24</b></em></span>
+</footer>
 </body>
 </html>

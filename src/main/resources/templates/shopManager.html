@@ -2,50 +2,66 @@
 <html lang="en"  xmlns:th="https://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
-    <title th:text = "${shop.name}"></title>
+    <title>Mini-Shopify</title>
+    <link rel = "icon" href ="/images/icon.png" type = "image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 <body>
-<h1 th:text = "'Welcome to ' +${shop.name}"></h1>
+<header class="header">
+    <div>
+        <span><a th:href="@{/welcome(userId=${user.id})}"><img class="logo" title="Home" alt="shopify-logo" src="images/logo.png"></a></span>
+    </div>
+</header>
 
-<h2>Manager view</h2>
+<div class="main-container">
+    <section>
+        <h1 th:text = "'Welcome to your store' +${shop.name}"></h1>
 
-<h3>Add item</h3>
-<form action="#" th:action="@{/addItem}"  method="get">
-    <p>Your shop id: <input th:name="id" th:value="${shop.id}"/></p>
-    <p>Product name: <input th:name="name"/></p>
-    <p>Product description: <input th:name="description"/></p>
-    <p>Product price :<input th:name="price"/></p>
-    <p>Product Quantity :<input th:name="quantity"/></p>
-    <input hidden th:name="userId" th:value="${user.id}"/>
-<!--    <p>Number of products :<input th:name="inventory"/></p>-->
+        <p>Your shop id is: <span th:text="${shop.id}"></span></p>
 
-    <p><input type="submit" value="Add Product"/></p>
-</form>
+        <h3>Add item</h3>
+        <form action="#" th:action="@{/addItem}"  method="get">
+            <input type="hidden" name="id" th:value="${shop.id}"/>
+            <p>Product name: <input th:name="name"/></p>
+            <p>Product description: <input th:name="description"/></p>
+            <p>Product price :<input th:name="price"/></p>
+            <p>Product Quantity :<input th:name="quantity"/></p>
+            <input hidden th:name="userId" th:value="${user.id}"/>
+            <!--    <p>Number of products :<input th:name="inventory"/></p>-->
 
-<h3>List of Products</h3>
-<table border = 1>
-    <thead>
-        <tr>
-            <th>Name</th><th>Description</th><th>Price</th><th>Quantity</th>
-        </tr>
-    </thead>
-    <tbody th:each="product: ${shop.products}">
-         <tr>
-             <td th:text="${product.title}"></td>
-             <td th:text="${product.description}"></td>
-             <td th:text="${product.price}">$</td>
-             <td th:text="${product.quantity}"></td>
-         </tr>
-    </tbody>
+            <p><input type="submit" value="Add Product"/></p>
+        </form>
 
-</table>
+        <h3>List of Products</h3>
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                <tr class="row-header">
+                    <th>Name</th><th>Description</th><th>Price</th><th>Quantity</th>
+                </tr>
+                </thead>
+                <tbody >
+                <tr class="row-body" th:each="product: ${shop.products}">
+                    <td class="cell-body" th:text="${product.title}"></td>
+                    <td class="cell-body"  th:text="${product.description}"></td>
+                    <td class="cell-body"  th:text="${product.price}">$</td>
+                    <td class="cell-body"  th:text="${product.quantity}"></td>
+                </tr>
+                </tbody>
 
-<form action="/signOut" method="get">
-    <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
-    <td ><input  type="submit" value="Sign Out" /></td>
-</form>
+            </table>
+        </div>
 
-<p><a href="/">Main page</a></p>
+        <div class="buttons-back-container">
+            <span><a th:href="@{/welcome(userId=${user.id})}"><button>Go Back</button></a></span>
+            <span><a th:href="@{/signOut(userId=${user.id})}"><button>Sign Out</button></a></span>
+        </div>
 
+    </section>
+</div>
+
+<footer class="footer">
+    <span class="developed-by">Developed by <em><b>Team 24</b></em></span>
+</footer>
 </body>
 </html>

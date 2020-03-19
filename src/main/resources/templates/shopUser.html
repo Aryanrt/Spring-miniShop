@@ -7,43 +7,54 @@
     <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 <body>
-<h1 th:text = "'Welcome to ' +${shop.name}"></h1>
+<header class="header">
+    <div>
+        <span><a th:href="@{/welcome(userId=${user.id})}"><img class="logo" title="Home" alt="shopify-logo" src="images/logo.png"></a></span>
+    </div>
+</header>
 
-<h2>User's view</h2>
+<div class = "main-container">
+    <section>
+        <h1 th:text = "'Welcome to ' +${shop.name}"></h1>
 
-<h3>List of Products</h3>
-<table border = 1>
-    <thead>
-    <tr>
-        <th>Shop Name</th><th>Product Title</th><th>Description</th><th>Price</th><th>Quantity</th><th>Cart</th>
-    </tr>
-    </thead>
+        <h3>List of Products</h3>
 
-    <tbody th:each="product: ${shop.products}">
-    <tr>
-        <form  action="#" th:action="@{/addToCart}" method="get">
-          <!--  <td th:text="${shop.name}" ></td> -->
-            <td> <input th:name="name" th:value="${shop.name}" ></td>
-            <td> <input th:name="title" th:value="${product.title}" ></td>
-            <td th:text="${product.description}"></td>
-            <td th:text="${product.price}"></td>
-            <td ><input th:name="number" th:value="0"/></td>
-            <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
-            <td ><input  type="submit" value="Add to Cart" /></td>
-        </form>
-    </tr>
-    </tbody>
-</table>
+        <div class="table-container">
+            <table class="table shop-user-table">
+                <thead>
+                <tr class="row-header">
+                    <th>Product Name</th><th>Description</th><th>Price</th><th>Quantity</th><th>Cart</th>
+                </tr>
+                </thead>
 
-<form action="/viewCart" method="get">
-    <input hidden th:name="userId" th:value="${user.id}"/>
-<td ><input  type="submit" value="View Your Cart" /></td>
-</form>
+                <tbody>
+                <tr class="row-body" th:each="product: ${shop.products}">
+                    <form  action="#" th:action="@{/addToCart}" method="get">
+                        <input hidden th:name="name" th:value="${shop.name}"/>
+                        <input hidden th:name="title" th:value="${product.title}"/>
+                        <input hidden th:name="userId" th:value="${user.id}"/>
+                        <td class ="cell-body" th:text="${product.title}"></td>
+                        <td class ="cell-body" th:text="${product.description}"></td>
+                        <td class ="cell-body number" th:text="${product.price}"></td>
+                        <td class ="cell-body number"><input type="number" th:name="number" value="0" min="0"/></td>
+                        <td class ="cell-body"><input class="button-cart" type="submit" value="Add to Cart" /></td>
+                    </form>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-<form action="/signOut" method="get">
-    <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
-</form>
-<p><a href="/">Main page</a></p>
+        <div class="buttons-back-container shop-user">
+            <span><a th:href="@{/shopList(userId=${user.id})}"><button>Go Back</button></a></span>
+            <span><a th:href="@{/viewCart(userId=${user.id})}"><button>View Cart</button></a></span>
+            <span><a th:href="@{/signOut(userId=${user.id})}"><button>Sign Out</button></a></span>
+        </div>
 
+    </section>
+</div>
+
+<footer class="footer">
+    <span class="developed-by">Developed by <em><b>Team 24</b></em></span>
+</footer>
 </body>
 </html>

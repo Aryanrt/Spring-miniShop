@@ -13,7 +13,7 @@ import team24soft.minishopify.repositories.ShopRepository;
 import team24soft.minishopify.repositories.UserRepository;
 
 @Controller()
-public class loginController {
+public class LoginController {
 
     @Autowired
     ShopRepository shopRepository;
@@ -86,6 +86,4 @@ public class loginController {
 
         return "index";
     }
-
-
 }

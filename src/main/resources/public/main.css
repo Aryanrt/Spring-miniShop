@@ -39,6 +39,8 @@ body{
     height: 4rem;            /* Footer height */
 }
 .developed-by{
+    font-size: large;
+    color: white;
     margin-left : 10px;
     margin-top: 20px;
 }
@@ -49,6 +51,10 @@ body{
 
 .table-container{
     padding-top:20px;
+    margin-left: 20px;
+}
+
+.buttons-back-container.shop-user{
     margin-left: 20px;
 }
 
@@ -67,7 +73,9 @@ body{
 .cell-body:not(.last){
     border-right: solid thin silver;
 }
-
+.cell-body.number{
+    width:30px;
+}
 .error-msg{
     font-weight: bold;
     color: red;
