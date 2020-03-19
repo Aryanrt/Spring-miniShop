@@ -8,8 +8,7 @@ import team24soft.minishopify.models.User;
 @RepositoryRestResource(collectionResourceRel = "Users", path = "users")
 public interface UserRepository extends PagingAndSortingRepository<User, Long>{
     User findByUsername(String username);
-    User findById(int id);
-    User findByIsOnline(boolean isOnline);
+    User findById(long id);
 
 }
 

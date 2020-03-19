@@ -10,10 +10,22 @@
 <div id="content">
     <img id="main-image" title= "Mini-Shopify" alt= "Mini-Shopify" src="/images/main.png">
     <div>
-        <span class="link-left"><a href="../buyer.html">Go Shopping</a></span>
-        <span class="link-right"><a href="../manager.html">Manage Store</a></span>
+        <span class="link-left">
+            <form action="/goShopping"  method="get">
+                <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
+                <td ><input  type="submit" value="Go Shopping" /></td>
+            </form>
+        </span>
+        <span class="link-right">
+            <form action="/goManaging"  method="get">
+                <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
+                <td ><input  type="submit" value="Manage Your Store" /></td>
+            </form>
+        </span>
     </div>
-    <form action="/signOut">
+    <form action="/signOut"  method="get">
+        <!--<input name="userId" value="${user.id}"  > -->
+        <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
         <td ><input  type="submit" value="Sign Out" /></td>
     </form>
 </div>

@@ -9,7 +9,5 @@ import team24soft.minishopify.models.Shop;
 @RepositoryRestResource(collectionResourceRel = "cart", path = "cart")
 public interface CartRepository extends PagingAndSortingRepository<Cart, Long> {
 
-   // Shop findById(long id);
-   // Shop findByName(String name);
     Cart findById(long id);
 }

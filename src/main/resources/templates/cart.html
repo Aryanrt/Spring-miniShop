@@ -30,7 +30,8 @@
 </table>
 
 <p><a href="/">Main page</a></p>
-<form action="/signOut">
+<form action="/signOut" method="get">
+    <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
     <td ><input  type="submit" value="Sign Out" /></td>
 </form>
 

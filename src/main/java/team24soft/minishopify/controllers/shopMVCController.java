@@ -29,18 +29,28 @@ public class shopMVCController {
     UserRepository userRepository;
 
     // Create a Shop
-    @PostMapping("/createShop")
-    public String createBook(@ModelAttribute Shop shop){
+    @GetMapping("/createShop")
+    public String createBook(@RequestParam(name="name", required = true) String name,
+                             @RequestParam(name="category", required = true) String category,
+                             @RequestParam(name="userId", required = true) long userId,
+                             Model model){
 
+        User user = userRepository.findById(userId);
+        model.addAttribute("user", user);
+        Shop shop = new Shop(name,category);
         shopRepository.save(shop);
+        model.addAttribute("shop", shop);
 
         return "shopManager";
     }
 
 
     @GetMapping("/getManagerShop")
-    public String getManagerShop(@RequestParam(name="id", required = false, defaultValue = "1") long id, Model model){
+    public String getManagerShop(@RequestParam(name="id", required = false, defaultValue = "1") long id,
+                                 @RequestParam(name="userId", required = true) long userId, Model model){
 
+        User user = userRepository.findById(userId);
+        model.addAttribute("user", user);
         Shop shop = shopRepository.findById(id);
 
         model.addAttribute("shop", shop);
@@ -54,8 +64,12 @@ public class shopMVCController {
                            @RequestParam(name="description", required = false,defaultValue = "") String  description,
                            @RequestParam(name="price", required = false, defaultValue = "0") long price,
                            @RequestParam(name="quantity", required = false, defaultValue = "0") long quantity,
+                           @RequestParam(name="userId", required = true) long userId,
                            Model model){
 
+
+        User user = userRepository.findById(userId);
+        model.addAttribute("user", user);
 
         Product product = new Product(name,description,price, quantity);
 
@@ -75,7 +89,10 @@ public class shopMVCController {
     }
 
     @GetMapping("/getBuyerShop")
-    public String getBuyerShop(@RequestParam(name="name", required = true) String name, Model model){
+    public String getBuyerShop(@RequestParam(name="name", required = true) String name,
+                               @RequestParam(name="userId", required = true) long userId, Model model){
+        User user = userRepository.findById(userId);
+        model.addAttribute("user", user);
 
         Shop shop = shopRepository.findByName(name);
 
@@ -87,7 +104,11 @@ public class shopMVCController {
     @GetMapping("/addToCart")
     public String addToCart(@RequestParam(name="name", required = true) String name,
                             @RequestParam(name="title", required = true) String title,
-                            @RequestParam(name="number", required = true) int number, Model model){
+                            @RequestParam(name="number", required = true) int number,
+                            @RequestParam(name="userId", required = true) long userId, Model model){
+
+        User user = userRepository.findById(userId);
+        model.addAttribute("user", user);
 
         System.out.println("aaa" + name + " " + title + number);
         Cart cart;
@@ -163,7 +184,9 @@ public class shopMVCController {
 
 */
     @GetMapping("/viewCart")
-    public String viewCart(Model model){
+    public String viewCart(@RequestParam(name="userId", required = true) long userId, Model model){
+        User user = userRepository.findById(userId);
+        model.addAttribute("user", user);
 
         Cart cart;
         if(cartRepository.count() == 0 )
@@ -175,6 +198,7 @@ public class shopMVCController {
             cart = cartRepository.findAll().iterator().next();
 
         model.addAttribute("cart", cart);
+        //model.addAttribute("user", user);
 
         return "cart";
     }
@@ -189,6 +213,7 @@ public class shopMVCController {
             User user = userRepository.findByUsername(username);
             user.setOnline(true);
             userRepository.save(user);
+            model.addAttribute("user", user);
             return "welcome";
         }
         return "index";
@@ -198,20 +223,40 @@ public class shopMVCController {
                            @RequestParam(name="password", required = true) String password,
                            @RequestParam(name="passwordRepeated", required = true) String passwordRepeated, Model model){
 
+        if(! password.equals(passwordRepeated))
+            return "../public/registration";
         User user = new User(username, password);
         user.setOnline(true);
         userRepository.save(user);
+        model.addAttribute("user", user);
 
         return "welcome";
     }
     @GetMapping("/signOut")
-    public String signOut(Model model){
+    public String signOut(@RequestParam(name="userId", required = true) long userId, Model model){
 
-        User user = userRepository.findByIsOnline(true);
+        User user = userRepository.findById(userId);
         user.setOnline(false);
         userRepository.save(user);
 
         return "index";
+    }
+
+    @GetMapping("/goShopping")
+    public String goShopping(@RequestParam(name="userId", required = true) long userId, Model model){
+
+        User user = userRepository.findById(userId);
+        model.addAttribute("user", user);
+
+        return "buyer";
+    }
+    @GetMapping("/goManaging")
+    public String goManaging(@RequestParam(name="userId", required = true) long userId, Model model){
+
+        User user = userRepository.findById(userId);
+        model.addAttribute("user", user);
+
+        return "manager";
     }
 
 

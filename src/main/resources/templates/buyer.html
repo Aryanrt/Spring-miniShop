@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>shop</title>
+</head>
+<body>
+<h1>Mini-Shopify</h1>
+
+<h2>Go to Store</h2>
+<form action="/getBuyerShop" method="get">
+    <div>
+        <span>
+            Name: <input type="text" name="name" />
+        </span>
+        <span>
+            <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
+        </span>
+        <span>
+            <input type="submit" value="Go to Store"/>
+        </span>
+    </div>
+
+</form>
+
+<p><a href="/public">Main page</a></p>
+<form action="/signOut" method="get">
+    <td ><input hidden th:name="userId" th:value="${user.id}"/></td>
+    <td ><input  type="submit" value="Sign Out" /></td>
+</form>
+
+</body>
+</html>
