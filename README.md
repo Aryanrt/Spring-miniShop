@@ -35,13 +35,28 @@ After running the app you can go to http://localhost:8081/ to see the app runnin
 
 * [Maven](https://maven.apache.org/) - Dependency Management
 
+## HEROKU SITE
+https://team24minishopify.herokuapp.com/
+
 ## Milestone 1:
 
 * Setup the project
 * Created basic classes
 * Added basic functionallity to write and read data
 
+## Milestone 2:
+
+* Added a simple login feature
+* Improved the look and feel
+* Added missing tests
+* Added more functionality:
+   -users can register and log in/out
+   -users can create stores 
+   -users can filter stores by name or category 
+   -users can add products to their carts)
+
 ## TODOs:
+*Use Jhipster (Not a must for the project, but it is a must for the presentation)
 
 ## Authors
 
