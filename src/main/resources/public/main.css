@@ -75,6 +75,8 @@ body{
 
 .button.sign-out{
     margin:10px;
+}
 
-
+.buttons-back-container{
+    margin-top:10px;
 }

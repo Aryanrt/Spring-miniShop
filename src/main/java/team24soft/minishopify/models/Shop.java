@@ -10,6 +10,10 @@ public class Shop {
     public String name; //Name of the Shop
     public String category; //Category of the Shop
 
+
+
+    public String description;
+
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public List<Product> products;
 
@@ -63,5 +67,13 @@ public class Shop {
 
     public void removeProduct(Product product){
         this.products.remove(product);
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

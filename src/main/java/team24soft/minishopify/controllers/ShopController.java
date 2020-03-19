@@ -14,7 +14,7 @@ import team24soft.minishopify.models.User;
 import team24soft.minishopify.repositories.*;
 
 @Controller()
-public class shopMVCController {
+public class ShopController {
 
     @Autowired
     ShopRepository shopRepository;
@@ -211,14 +211,7 @@ public class shopMVCController {
 
         return "buyer";
     }
-    @GetMapping("/goManaging")
-    public String goManaging(@RequestParam(name="userId", required = true) long userId, Model model){
 
-        User user = userRepository.findById(userId);
-        model.addAttribute("user", user);
-
-        return "manager";
-    }
 
 
 

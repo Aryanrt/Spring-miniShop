@@ -1,27 +1,14 @@
 package team24soft.minishopify.controllers;
-import static org.junit.matchers.JUnitMatchers.containsString;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
-import team24soft.minishopify.models.Cart;
-import team24soft.minishopify.models.Product;
-import team24soft.minishopify.models.Shop;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -29,11 +16,11 @@ public class ControllerTests {
     @Autowired
     MockMvc mockMvc;
     @InjectMocks
-    shopMVCController controller;
+    ShopController controller;
 
     @Before
     void setup()  throws Exception {
-        controller = new shopMVCController();
+        controller = new ShopController();
         MockitoAnnotations.initMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }

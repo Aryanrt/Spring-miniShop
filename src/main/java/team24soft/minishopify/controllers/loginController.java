@@ -6,9 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import team24soft.minishopify.models.Cart;
-import team24soft.minishopify.models.Product;
-import team24soft.minishopify.models.Shop;
 import team24soft.minishopify.models.User;
 import team24soft.minishopify.repositories.CartRepository;
 import team24soft.minishopify.repositories.ProductRepository;
@@ -20,13 +17,10 @@ public class loginController {
 
     @Autowired
     ShopRepository shopRepository;
-
     @Autowired
     ProductRepository productRepository;
-
     @Autowired
     CartRepository cartRepository;
-
     @Autowired
     UserRepository userRepository;
 
@@ -59,7 +53,11 @@ public class loginController {
                            @RequestParam(name="passwordRepeated", required = true) String passwordRepeated,
                            Model model){
 
-        if(! password.equals(passwordRepeated)) {
+        if(username.equals("") || password.equals("") || passwordRepeated.equals("")){
+            model.addAttribute("msg", "There are empty fields");
+            return "registration";
+        }
+        if(!password.equals(passwordRepeated)) {
             model.addAttribute("msg", "Passwords do not match");
             return "registration";
         }
