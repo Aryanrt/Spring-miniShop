@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Mini-Shopify</title>
+    <link rel = "icon" href ="/images/icon.png" type = "image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+<body>
+<header class="header">
+    <div>
+        <span><a th:href="@{/welcome(userId=${user.id})}"><img class="logo" title="Home" alt="shopify-logo" src="images/logo.png"></a></span>
+    </div>
+</header>
+<div class = "main-container">
+    <section>
+        <h2>Thanks for your purchase!</h2>
+
+        <div class="buttons-back-container">
+            <span><a th:href="@{/shopList(userId=${user.id})}"><button>Go Back</button></a></span>
+            <span><a th:href="@{/signOut(userId=${user.id})}"><button>Sign Out</button></a></span>
+        </div>
+
+    </section>
+</div>
+
+
+<footer class="footer">
+    <span class="developed-by">Developed by <em><b>Team 24</b></em></span>
+</footer>
+</body>
+</html>

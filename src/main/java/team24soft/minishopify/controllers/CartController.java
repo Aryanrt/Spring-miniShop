@@ -36,7 +36,7 @@ public class CartController {
         User user = userRepository.findById(userId);
         model.addAttribute("user", user);
 
-        System.out.println("aaa" + name + " " + title + number);
+
         Cart cart;
         //if this is the first item in the cart, then create a Cart object
         if(cartRepository.count() == 0 )
@@ -47,9 +47,6 @@ public class CartController {
         else
             cart = cartRepository.findAll().iterator().next();
 
-//        Shop shop = (Shop) model.getAttribute("shop");
-        // model.addAttribute("shop", shop);
-        //System.out.println(shopName);
         Shop shop = shopRepository.findByName(name);
 
         //shop.getProducts().
@@ -89,26 +86,32 @@ public class CartController {
 
         //return "shopUser";
     }
-    /*
+
         @GetMapping("/removeFromCart")
-        public String removeFromCart(@RequestParam(name="name", required = true) String name,
-                                @RequestParam(name="title", required = true) String title, Model model){
+        public String removeFromCart(@RequestParam(name="title", required = true) String title,
+                                     @RequestParam(name="userId", required = true) long userId, Model model){
 
+            User user = userRepository.findById(userId);
+            model.addAttribute("user", user);
+            Product product = null;
+
+            for(Product p: productRepository.findAll())
+                if(p.getTitle().equals(title))
+                {
+                    product = p;
+                    break;
+                }
             Cart cart = cartRepository.findAll().iterator().next();
-            cart.removeProduct();
+            cartRepository.delete(cart);
+            cart.removeProduct(product);
+            cartRepository.save(cart);
             model.addAttribute("cart", cart);
-
             return "cart";
-            }
-            model.addAttribute("shop", shop);
-
-            //model.addAttribute("shop", shop);
-            return "shopUser";
 
             //return "shopUser";
         }
 
-    */
+
     @GetMapping("/viewCart")
     public String viewCart(@RequestParam(name="userId", required = true) long userId, Model model){
         User user = userRepository.findById(userId);
@@ -127,6 +130,18 @@ public class CartController {
         //model.addAttribute("user", user);
 
         return "cart";
+    }
+    @GetMapping("/purchaseConfirmed")
+    public String purchaseConfirmed(@RequestParam(name="userId", required = true) long userId, Model model){
+
+        User user = userRepository.findById(userId);
+        model.addAttribute("user", user);
+
+        Cart cart = cartRepository.findAll().iterator().next();
+        cartRepository.delete(cart);
+        //model.addAttribute("cart", cart);
+
+        return "purchaseConfirmed";
     }
 
 }

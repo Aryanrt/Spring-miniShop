@@ -23,16 +23,22 @@
             </thead>
             <tbody >
             <tr class="row-body" th:each="product: ${cart.products}">
-                <td class ="cell-body" th:text="${product.title}"></td>
-                <td class ="cell-body" th:text="${product.description}"></td>
-                <td class ="cell-body" th:text="${product.price}"></td>
-                <td class ="cell-body" th:text="${product.quantity}"></td>
+                <form  action="#" th:action="@{/removeFromCart}" method="get">
+                    <input hidden th:name="title" th:value="${product.title}"/>
+                    <input hidden th:name="userId" th:value="${user.id}"/>
+                    <td class ="cell-body" th:text="${product.title}"></td>
+                    <td class ="cell-body" th:text="${product.description}"></td>
+                    <td class ="cell-body" th:text="${product.price}"></td>
+                    <td class ="cell-body" th:text="${product.quantity}"></td>
+                    <td class ="cell-body"><input class="button-cart" type="submit" value="Remove from Cart" /></td>
+                </form>
             </tr>
             </tbody>
 
         </table>
 
         <div class="buttons-back-container">
+            <span><a th:href="@{/purchaseConfirmed(userId=${user.id})}"><button>Purchase</button></a></span>
             <span><a th:href="@{/shopList(userId=${user.id})}"><button>Go Back</button></a></span>
             <span><a th:href="@{/signOut(userId=${user.id})}"><button>Sign Out</button></a></span>
         </div>

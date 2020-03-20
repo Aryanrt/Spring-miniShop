@@ -10,6 +10,7 @@ public class User {
     private String username;
     private String password;
     private boolean isOnline;
+    //private Cart cart;
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -53,4 +54,6 @@ public class User {
     public void setId(long id) {
         this.id = id;
     }
+   // public void  setCart(Cart cart) { this.cart = cart; }
+    //public Cart getCart() { return cart;}
 }
