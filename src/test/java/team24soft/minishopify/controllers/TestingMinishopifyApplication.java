@@ -26,4 +26,12 @@ public class TestingMinishopifyApplication {
     public void shouldReturnDefaultMessage() throws Exception {
         this.mockMvc.perform(get("http://localhost:8081/")).andExpect(status().isOk());
     }
+    
+    /**
+     * tests that the register page loads
+     */
+    @Test
+    public void register() throws Exception {
+        this.mockMvc.perform(get("http://localhost:8081/register")).andExpect(status().isOk());
+    }
 }
