@@ -35,6 +35,10 @@ After running the app you can go to http://localhost:8081/ to see the app runnin
 
 * [Maven](https://maven.apache.org/) - Dependency Management
 
+## UML
+
+UML diagrams are in the folder named UML
+
 ## HEROKU SITE
 https://team24minishopify.herokuapp.com/
 
