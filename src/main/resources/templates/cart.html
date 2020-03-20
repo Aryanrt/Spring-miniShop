@@ -25,6 +25,7 @@
             <tr class="row-body" th:each="product: ${cart.products}">
                 <form  action="#" th:action="@{/removeFromCart}" method="get">
                     <input hidden th:name="title" th:value="${product.title}"/>
+                    <input hidden th:name="name" th:value="${name}"/>
                     <input hidden th:name="userId" th:value="${user.id}"/>
                     <td class ="cell-body" th:text="${product.title}"></td>
                     <td class ="cell-body" th:text="${product.description}"></td>

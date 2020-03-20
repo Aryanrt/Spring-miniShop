@@ -89,31 +89,38 @@ public class CartController {
 
         @GetMapping("/removeFromCart")
         public String removeFromCart(@RequestParam(name="title", required = true) String title,
+                                     @RequestParam(name="name", required = true) String name,
                                      @RequestParam(name="userId", required = true) long userId, Model model){
 
             User user = userRepository.findById(userId);
             model.addAttribute("user", user);
-            Product product = null;
 
-            for(Product p: productRepository.findAll())
+            Cart cart = cartRepository.findAll().iterator().next();
+
+
+
+            Cart cart2 = cart;
+
+            for(Product p : cart.getProducts())
+            {
                 if(p.getTitle().equals(title))
                 {
-                    product = p;
+                    cart2.removeProduct(p);
                     break;
                 }
-            Cart cart = cartRepository.findAll().iterator().next();
+            }
+
             cartRepository.delete(cart);
-            cart.removeProduct(product);
-            cartRepository.save(cart);
-            model.addAttribute("cart", cart);
+            cartRepository.save(cart2);
+            model.addAttribute("cart", cart2);
             return "cart";
 
-            //return "shopUser";
         }
 
 
     @GetMapping("/viewCart")
-    public String viewCart(@RequestParam(name="userId", required = true) long userId, Model model){
+    public String viewCart(@RequestParam(name="userId", required = true) long userId,
+                           @RequestParam(name="name", required = true) String name, Model model){
         User user = userRepository.findById(userId);
         model.addAttribute("user", user);
 
@@ -126,7 +133,9 @@ public class CartController {
         else
             cart = cartRepository.findAll().iterator().next();
 
+        model.addAttribute("name", name);
         model.addAttribute("cart", cart);
+        //model.addAttribute("cart", cart);
         //model.addAttribute("user", user);
 
         return "cart";
