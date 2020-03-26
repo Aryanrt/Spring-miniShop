@@ -13,7 +13,7 @@ public class Product {
     private String title; //name given to product
     private String description; //description of the product
     private long quantity; //Quantity of the product
-    private long price; //price of the product
+    private float price; //price of the product
 
 
 
@@ -28,13 +28,13 @@ public class Product {
     }
 
     //Contructor
-    public Product(String title, String description, long price, long quantity) {
+    public Product(String title, String description, float price, long quantity) {
         this.title = title;
         this.description = description;
         this.quantity = quantity;
         this.price = price;
     }
-    public Product(String title, String description, long price) {
+    public Product(String title, String description, float price) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -65,11 +65,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public long getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

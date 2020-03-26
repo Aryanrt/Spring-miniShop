@@ -59,7 +59,7 @@ public class ShopController {
     public String getItems(@RequestParam(name="id", required = true) long id,
                            @RequestParam(name="name", required = true) String name,
                            @RequestParam(name="description", required = false,defaultValue = "") String  description,
-                           @RequestParam(name="price", required = false, defaultValue = "0") long price,
+                           @RequestParam(name="price", required = false, defaultValue = "0") float price,
                            @RequestParam(name="quantity", required = false, defaultValue = "0") long quantity,
                            @RequestParam(name="userId", required = true) long userId,
                            Model model){
