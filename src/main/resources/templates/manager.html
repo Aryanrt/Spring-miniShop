@@ -19,18 +19,21 @@
         <h2>Create my store</h2>
         <form action="/createShop" method="get">
             <div>
-        <span>
-            Name: <input type="text" name="name" />
-        </span>
-                <span>
-            Category: <input type="text" name="category" />
-        </span>
-                <span>
-        <input hidden th:name="userId" th:value="${user.id}"/>
-        </span>
-                <span>
-            <input type="submit" value="Create Store"/>
-        </span>
+                <div>
+                    Name: <input type="text" name="name" />
+                </div>
+                <div>
+                    Category: <input type="text" name="category" />
+                </div>
+                <div>
+                    Description: <input type="text" name="description" />
+                </div>
+                <div>
+                    <input hidden th:name="userId" th:value="${user.id}"/>
+                </div>
+                <div>
+                    <input type="submit" value="Create Store"/>
+                </div>
             </div>
 
         </form>

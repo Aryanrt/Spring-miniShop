@@ -30,11 +30,13 @@ public class ShopController {
     public String createBook(@RequestParam(name="name", required = true) String name,
                              @RequestParam(name="category", required = true) String category,
                              @RequestParam(name="userId", required = true) long userId,
+                             @RequestParam(name="description", required = false, defaultValue = "") String description,
                              Model model){
 
         User user = userRepository.findById(userId);
         model.addAttribute("user", user);
         Shop shop = new Shop(name,category);
+        shop.setDescription(description);
         shopRepository.save(shop);
         model.addAttribute("shop", shop);
 
