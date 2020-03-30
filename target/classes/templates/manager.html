@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Mini-Shopify</title>
+    <link rel = "icon" href ="/images/icon.png" type = "image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+<body>
+<header class="header">
+    <div>
+        <span><a th:href="@{/welcome(userId=${user.id})}"><img class="logo" title="Home" alt="shopify-logo" src="images/logo.png"></a></span>
+    </div>
+</header>
+<div class="main-container">
+    <section>
+        <h1>Mini-Shopify</h1>
+
+        <h2>Create my store</h2>
+        <form action="/createShop" th:object="${shop}" method="post">
+            <div>
+                <div>
+                    Name: <input type="text" th:field="*{name}" />
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error: </td>
+                    <!--<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td> -->
+                </div>
+                <div>
+                    Category: <input type="text" th:field="*{category}" />
+                </div>
+                <div>
+                    Description: <input type="text" th:field="*{description}" />
+                </div>
+                <div>
+                    <input hidden th:name="userId" th:value="${user.id}"/>
+                </div>
+                <div>
+                    <input type="submit" value="Create Store"/>
+                </div>
+            </div>
+
+        </form>
+
+        <h2>Go to my store</h2>
+        <form action="/getManagerShop" method="get">
+            <div>
+        <span>
+            ID: <input type="text" name="id" />
+        </span>
+                <span>
+        <input hidden th:name="userId" th:value="${user.id}"/>
+        </span>
+                <span>
+            <input type="submit" value="Go to my store"/>
+        </span>
+            </div>
+
+        </form>
+
+        <div class="buttons-back-container">
+            <span><a th:href="@{/welcome(userId=${user.id})}"><button>Go Back</button></a></span>
+            <span><a th:href="@{/signOut(userId=${user.id})}"><button>Sign Out</button></a></span>
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <span class="developed-by">Developed by <em><b>Team 24</b></em></span>
+</footer>
+</body>
+</html>
