@@ -1,0 +1,7 @@
+team24soft\minishopify\controllers\TestingMinishopifyApplication.class
+team24soft\minishopify\models\UserTest.class
+team24soft\minishopify\models\ProductTest.class
+team24soft\minishopify\models\CartTest.class
+team24soft\minishopify\models\ShopTest.class
+team24soft\minishopify\controllers\ControllerTests.class
+team24soft\minishopify\MinishopifyApplicationTests.class

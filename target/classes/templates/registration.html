@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini-Shopify</title>
+    <link rel = "icon" href ="/images/icon.png" type = "image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <span><a href="/"><img class="logo" title="Home" alt="shopify-logo" src="images/logo.png"></a></span>
+        </div>
+    </header>
+    <div class = "main-container">
+        <section>
+            <h1>Welcome to Mini-Shopify</h1>
+
+            <div class="registration-container">
+                <h2>Registration</h2>
+
+                <p class="error-msg" th:text="${msg}"></p>
+                <form action="/register" method="post">
+
+                    <p>username: <input type="text" name="username" /></p>
+                    <p>password: <input type="password" name="password" /></p>
+                    <p>re-enter password: <input type="password" name="passwordRepeated" /></p>
+
+                    <p><input type="submit" value="Register"/></p>
+
+                </form>
+
+                <div class="buttons-back-container">
+                    <span><a href="/"><button>Go Back</button></a></span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <span class="developed-by">Developed by <em><b>Team 24</b></em></span>
+    </footer>
+
+</body>
+</html>

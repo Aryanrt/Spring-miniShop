@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini-Shopify</title>
+    <link rel = "icon" href ="/images/icon.png" type = "image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <span><a th:href="@{/welcome(userId=${user.id})}"><img class="logo" title="Home" alt="shopify-logo" src="images/logo.png"></a></span>
+        </div>
+    </header>
+    <div class = "main-container">
+        <section>
+            <h1>Welcome to Mini-Shopify</h1>
+            <div>
+                <form>
+                    <label>Filter shops by name or category</label>
+                    <input type="hidden" name="userId" th:value="${user.id}"/>
+                    <input type="text" name="filter"/>
+                    <input type="submit" value="Filter Shops">
+                </form>
+            </div>
+            <div class="table-container">
+                <table class="table shop-list-table">
+                    <thead>
+                    <tr class="row-header">
+                        <th>Name</th><th>Category</th><th>Description</th><th>Visit this shop</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class= "row-body" th:each="shop: ${shops}">
+                        <td class="cell-body" th:text="${shop.name}"></td>
+                        <td class="cell-body" th:text="${shop.category}"></td>
+                        <td class="cell-body" th:text="${shop.description}">$</td>
+                        <td class="cell-body last"><a th:href="@{/shop(id=${shop.id}, userId=${user.id})}"  th:text="${shop.name}"></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div><a th:href="@{/shopList(userId=${user.id})}">Show all</a></div>
+            </div>
+        </section>
+
+        <div class="buttons-back-container">
+            <span><a th:href="@{/welcome(userId=${user.id})}"><button>Go Back</button></a></span>
+            <span><a th:href="@{/signOut(userId=${user.id})}"><button>Sign Out</button></a></span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <span class="developed-by">Developed by <em><b>Team 24</b></em></span>
+    </footer>
+
+</body>
+</html>

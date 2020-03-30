@@ -4,5 +4,5 @@ jdk:
 
 deploy:
   provider: heroku
-  api-key: 8158dc8d-4678-4f26-869b-06f12222ce69
+  api-key: 19726be2-66a3-4816-8b83-4ca279e11ab3
   app: team24minishopify
