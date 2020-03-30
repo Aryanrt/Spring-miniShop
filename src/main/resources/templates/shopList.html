@@ -36,7 +36,7 @@
                         <td class="cell-body" th:text="${shop.name}"></td>
                         <td class="cell-body" th:text="${shop.category}"></td>
                         <td class="cell-body" th:text="${shop.description}">$</td>
-                        <td class="cell-body last"><a th:href="@{/shop(id=${shop.id}, userId=${user.id})}"  th:text="${shop.name}"></a></td>
+                        <td class="cell-body last"><a th:href="@{/shop(shopName=${shop.name}, userId=${user.id})}"  th:text="${shop.name}"></a></td>
                     </tr>
                     </tbody>
                 </table>

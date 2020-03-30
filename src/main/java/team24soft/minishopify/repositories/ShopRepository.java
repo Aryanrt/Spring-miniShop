@@ -10,7 +10,7 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "shops", path = "shops")
 public interface ShopRepository extends PagingAndSortingRepository<Shop, Long> {
 
-    Shop findById(long id);
+   // Shop findById(long id);
     Shop findByName(String name);
 
     List<Shop> findByCategoryOrName(String category, String name);
