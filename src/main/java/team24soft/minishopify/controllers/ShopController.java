@@ -12,6 +12,11 @@ import team24soft.minishopify.models.Product;
 import team24soft.minishopify.models.Shop;
 import team24soft.minishopify.models.User;
 import team24soft.minishopify.repositories.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.validation.BindingResult;
 
 @Controller()
 public class ShopController {
@@ -26,17 +31,18 @@ public class ShopController {
     UserRepository userRepository;
 
     // Create a Shop
-    @GetMapping("/createShop")
-    public String createBook(@RequestParam(name="name", required = true) String name,
-                             @RequestParam(name="category", required = true) String category,
-                             @RequestParam(name="userId", required = true) long userId,
-                             @RequestParam(name="description", required = false, defaultValue = "") String description,
-                             Model model){
+    @PostMapping("/createShop")
+    public String createBook( @Valid @ModelAttribute("shop") Shop shop,
+                              BindingResult bindingResult,
+                              @RequestParam(name="userId", required = true) long userId,
+                              Model model){
 
         User user = userRepository.findById(userId);
         model.addAttribute("user", user);
-        Shop shop = new Shop(name,category);
-        shop.setDescription(description);
+        if (bindingResult.hasErrors()) {
+            return "manager";
+        }
+
         shopRepository.save(shop);
         model.addAttribute("shop", shop);
 

@@ -3,15 +3,17 @@ package team24soft.minishopify.models;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Shop {
 
+    @NotNull
+    @Size(min=2, max=30)
     public String name; //Name of the Shop
     public String category; //Category of the Shop
-
-
-
     public String description;
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)

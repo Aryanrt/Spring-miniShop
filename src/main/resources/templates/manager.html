@@ -17,16 +17,18 @@
         <h1>Mini-Shopify</h1>
 
         <h2>Create my store</h2>
-        <form action="/createShop" method="get">
+        <form action="/createShop" th:object="${shop}" method="post">
             <div>
                 <div>
-                    Name: <input type="text" name="name" />
+                    Name: <input type="text" th:field="*{name}" />
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error: </td>
+                    <!--<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td> -->
                 </div>
                 <div>
-                    Category: <input type="text" name="category" />
+                    Category: <input type="text" th:field="*{category}" />
                 </div>
                 <div>
-                    Description: <input type="text" name="description" />
+                    Description: <input type="text" th:field="*{description}" />
                 </div>
                 <div>
                     <input hidden th:name="userId" th:value="${user.id}"/>

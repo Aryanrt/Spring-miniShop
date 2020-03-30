@@ -67,6 +67,7 @@ public class UserController {
 
         User user = userRepository.findById(userId);
         model.addAttribute("user", user);
+        model.addAttribute("shop", new Shop("",""));
 
         return "manager";
     }
