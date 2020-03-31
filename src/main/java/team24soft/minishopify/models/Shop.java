@@ -9,19 +9,22 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Shop {
+
     @Id
     @NotNull
     @Size(min=2, max=30)
     public String name; //Name of the Shop
-    public String category; //Category of the Shop
+    //public String category; //Category of the Shop
+    public Category category;
     public String description;
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public List<Product> products;
 
+
     protected Shop(){}
 
-    public Shop(String name, String category){
+    public Shop(String name, Category category){
         this.name = name;
         this.category = category;
         this.products = new ArrayList<Product>();
@@ -35,11 +38,11 @@ public class Shop {
         this.name = name;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

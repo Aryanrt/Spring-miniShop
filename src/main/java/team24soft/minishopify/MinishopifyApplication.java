@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import team24soft.minishopify.models.Category;
 import team24soft.minishopify.models.Product;
 import team24soft.minishopify.models.Shop;
 import team24soft.minishopify.repositories.ProductRepository;
@@ -32,12 +33,12 @@ public class MinishopifyApplication {
     public CommandLineRunner demo() {
         return (args) -> {
             ArrayList<String> names = new ArrayList<String>(Arrays.asList("Adidas", "Nike", "HP", "Samsung", "Asus", "Coca-Cola", "Pepsi", "Halls", "Excel", "Albanese"));
-            ArrayList<String> categories = new ArrayList<String>(Arrays.asList("sports", "sports", "electronics", "electronics", "electronics", "drinks", "drinks", "candy", "candy", "candy"));
+            ArrayList<String> categories = new ArrayList<String>(Arrays.asList("Sports", "Sports", "Electronics", "Electronics", "Electronics", "Drinks", "Drinks", "Candy", "Candy", "Candy"));
             ArrayList<String> descriptions = new ArrayList<String>(Arrays.asList("Adidas Sports", "Just Do It", "Best Computers", "Best Cellphones", "Best Monitors", "Just Drink it", "Pepsi Cola", "Fresh candies", "Excellent candies", "Delicious chocolate"));
 
 
             for (int i = 0; i < names.size(); i++) {
-                Shop shop = new Shop(names.get(i), categories.get(i));
+                Shop shop = new Shop(names.get(i), Category.valueOf(categories.get(i)));
                 shop.setDescription(descriptions.get(i));
 
                 for (int j = 0; j < 10; j++) {

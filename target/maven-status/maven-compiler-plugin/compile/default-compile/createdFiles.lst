@@ -10,5 +10,4 @@ team24soft\minishopify\models\Product.class
 team24soft\minishopify\repositories\ShopRepository.class
 team24soft\minishopify\MinishopifyApplication.class
 team24soft\minishopify\controllers\LoginController.class
-team24soft\minishopify\controllers\ExceptionInterceptor.class
 team24soft\minishopify\models\Shop.class
