@@ -92,21 +92,22 @@ public class CartController {
             Cart cart = cartRepository.findAll().iterator().next();
 
 
-
-            Cart cart2 = cart;
-
-            for(Product p : cart.getProducts())
-            {
-                if(p.getTitle().equals(title))
-                {
-                    cart2.removeProduct(p);
+            Shop shop = shopRepository.findByName(name);
+            //cart.contents.remove(productRepository.findByTitle(shop))
+            //for(Prodcart.contents.keySet())
+            for (Product product : shop.getProducts()) {
+                if (product.getTitle().equalsIgnoreCase(title)) {
+                    productRepository.delete(product);
+                    product.setQuantity(product.getQuantity()+ cart.contents.get(product));
+                    cart.contents.remove(product);
+                    //cart.contents.put(product, (int) Math.min(number, product.getQuantity()));
+                    cartRepository.save(cart);
+                    productRepository.save(product);
                     break;
                 }
-            }
+            }//for
 
-            cartRepository.delete(cart);
-            cartRepository.save(cart2);
-            model.addAttribute("cart", cart2);
+            model.addAttribute("cart", cart);
             return "cart";
 
         }
