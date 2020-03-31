@@ -107,6 +107,7 @@ public class CartController {
                 }
             }//for
 
+            model.addAttribute("shop", shop);
             model.addAttribute("cart", cart);
             return "cart";
 
