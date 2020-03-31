@@ -18,12 +18,15 @@
         <h1 th:text = "'Welcome to your store ' +${shop.name}"></h1>
 
         <h3>Add item</h3>
-        <form action="#" th:action="@{/addItem}"  method="post">
+        <form action="#" th:action="@{/addItem}" th:object="${product}" method="post">
             <input type="hidden" name="shopName" th:value="${shop.name}"/>
-            <p>Product name: <input th:name="name"/></p>
-            <p>Product description: <input th:name="description"/></p>
-            <p>Product price :<input th:name="price"/></p>
-            <p>Product Quantity :<input th:name="quantity"/></p>
+            <p>Product name: <input type="text" th:field="*{title}"/></p>
+            <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error: </td>
+            <p>Product description: <input th:field="*{description}"/></p>
+            <p>Product price :<input th:type="number" th:field="*{price}"/></p>
+            <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Error: </td>
+            <p>Product Quantity :<input th:type="number" th:field="*{quantity}"/></p>
+            <td th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Error: </td>
             <input hidden th:name="userId" th:value="${user.id}"/>
             <!--    <p>Number of products :<input th:name="inventory"/></p>-->
 

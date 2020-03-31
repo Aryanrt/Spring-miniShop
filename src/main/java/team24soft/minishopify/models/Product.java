@@ -5,14 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 public class Product {
+
+    @NotNull
+    @Size(min=2, max=30, message = "Tile has to be between 2 and 30 characters" )
     private String title; //name given to product
+
     private String description; //description of the product
+
+    @DecimalMin(value="1")
     private long quantity; //Quantity of the product
+    @DecimalMin(value="1")
     private float price; //price of the product
 
 
@@ -24,6 +30,7 @@ public class Product {
     private Long id;
 
     public Product(){
+        this.setTitle(null);
 
     }
 

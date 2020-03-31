@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import team24soft.minishopify.models.Cart;
-import team24soft.minishopify.models.Product;
-import team24soft.minishopify.models.Shop;
-import team24soft.minishopify.models.User;
+import team24soft.minishopify.models.*;
 import team24soft.minishopify.repositories.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -44,6 +41,8 @@ public class ShopController {
         }
 
         shopRepository.save(shop);
+
+        model.addAttribute("product", new Product());
         model.addAttribute("shop", shop);
 
         return "shopManager";
@@ -57,37 +56,33 @@ public class ShopController {
         User user = userRepository.findById(userId);
         model.addAttribute("user", user);
         Shop shop = shopRepository.findByName(shopName);
-
         model.addAttribute("shop", shop);
+        model.addAttribute("product", new Product());
+
 
         return "shopManager";
     }
 
     @PostMapping ("/addItem")
-    public String getItems(@RequestParam(name="shopName", required = true) String shopName,
-                           @RequestParam(name="name", required = true) String name,
-                           @RequestParam(name="description", required = false,defaultValue = "") String  description,
-                           @RequestParam(name="price", required = false, defaultValue = "0") float price,
-                           @RequestParam(name="quantity", required = false, defaultValue = "0") long quantity,
+    public String getItems(@Valid @ModelAttribute("product") Product product,
+                           BindingResult bindingResult,
+                           @RequestParam(name="shopName", required = true) String shopName,
                            @RequestParam(name="userId", required = true) long userId,
                            Model model){
 
 
         User user = userRepository.findById(userId);
         model.addAttribute("user", user);
-
-        Product product = new Product(name,description,price, quantity);
-
-       // product.setInventoryNumber(inventory);
-
         Shop shop = shopRepository.findByName(shopName);
+        model.addAttribute("shop", shop);
+
+        if (bindingResult.hasErrors()) {
+            return "shopManager";
+        }
 
         productRepository.save(product);
-
         shop.addProduct(product);
-
         shopRepository.save(shop);
-
         model.addAttribute("shop", shop);
 
         return "shopManager";
