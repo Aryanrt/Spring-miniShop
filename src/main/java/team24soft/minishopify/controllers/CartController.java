@@ -31,57 +31,55 @@ public class CartController {
     public String addToCart(@RequestParam(name="name", required = true) String name,
                             @RequestParam(name="title", required = true) String title,
                             @RequestParam(name="number", required = true) int number,
-                            @RequestParam(name="userId", required = true) long userId, Model model){
+                            @RequestParam(name="userId", required = true) long userId, Model model) {
 
-        User user = userRepository.findById(userId);
+       User user = userRepository.findById(userId);
         model.addAttribute("user", user);
-
+        //boolean flag =false;
 
         Cart cart;
         //if this is the first item in the cart, then create a Cart object
-        if(cartRepository.count() == 0 )
-        {
+        if (cartRepository.count() == 0) {
             cart = new Cart();
             cartRepository.save(cart);
-        }
-        else
+        } else
             cart = cartRepository.findAll().iterator().next();
 
         Shop shop = shopRepository.findByName(name);
 
-        for( Product product: shop.getProducts()) {
+        for (Product product : shop.getProducts()) {
             if (product.getTitle().equals(title)) {
                 boolean alreadyInCart = false;
-                for(Product p : cart.contents.keySet())
-                {
+                for (Product p : cart.contents.keySet()) {
                     //if product is already in the cart, just add up the quantities
-                    if(p.getId() == product.getId())
-                    {
+                    if (p.getId() == product.getId()) {
                         cartRepository.delete(cart);
-                        cart.contents.put(p, (int) Math.min(cart.contents.get(p)+number, product.getQuantity()));
+                        cart.contents.put(p, (int) Math.min(cart.contents.get(p) + number, product.getQuantity()));
                         cartRepository.save(cart);
                         alreadyInCart = true;
                         break;
                     }
                 }
-                if(alreadyInCart)
+                if (alreadyInCart)
                     break;
-                System.out.println(title+" "+  productRepository.findByTitle(title).getPrice() + " "+
-                        Math.min(number,productRepository.findByTitle(title).getQuantity()) );
 
-                cart.contents.put(productRepository.findByTitle(title), (int) Math.min(number,productRepository.
-                        findByTitle(title).getQuantity()));
-                cartRepository.save(cart);
-                break;
-            }
-        }
-        model.addAttribute("shop", shop);
+                for (Product product1 : shop.getProducts()) {
+                    if (product1.getTitle().equalsIgnoreCase(title)) {
+                        cart.contents.put(product1, (int) Math.min(number, product1.getQuantity()));
+                        cartRepository.save(cart);
+                        break;
+                    }
+                }//for
+            }//if
+        }//for
+            model.addAttribute("shop", shop);
 
-        //model.addAttribute("shop", shop);
-        return "shopUser";
+            //model.addAttribute("shop", shop);
+            return "shopUser";
 
-        //return "shopUser";
+            //return "shopUser";
     }
+
 
         @GetMapping("/removeFromCart")
         public String removeFromCart(@RequestParam(name="title", required = true) String title,
