@@ -45,9 +45,6 @@ public class UserController {
                     shops.add(shop);
 
         }
-        for(Shop s: shops)
-            System.out.println("%%%" + s.getName());
-
 
         User user = userRepository.findById(userId);
 

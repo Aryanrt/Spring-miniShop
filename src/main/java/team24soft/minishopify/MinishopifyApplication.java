@@ -42,7 +42,7 @@ public class MinishopifyApplication {
                 shop.setDescription(descriptions.get(i));
 
                 for (int j = 0; j < 10; j++) {
-                    Product product = new Product("Product " + j, names.get(i) + " Product " + j, this.RandomNumber(1, 10), this.RandomNumber(50, 100));
+                    Product product = new Product("Product " + j, names.get(i) + " Product " + j, this.RandomNumber(2, 10), this.RandomNumber(50, 100));
                     shop.addProduct(product);
                     productRepository.save(product);
                 }

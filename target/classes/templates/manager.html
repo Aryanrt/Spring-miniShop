@@ -24,22 +24,18 @@
                     <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error: </td>
                     <!--<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td> -->
                 </div>
-                <br>
                 <div>
                     Category: <select th:field="*{category}">
                     <option th:each="colorOpt : ${T(team24soft.minishopify.models.Category).values()}"
                             th:value="${colorOpt}" th:text="${colorOpt}"></option>
                 </select>
                 </div>
-                <br>
                 <div>
                     Description: <input type="text" th:field="*{description}" />
                 </div>
-                <br>
                 <div>
                     <input hidden th:name="userId" th:value="${user.id}"/>
                 </div>
-                <br>
                 <div>
                     <input type="submit" value="Create Store"/>
                 </div>
