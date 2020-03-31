@@ -84,6 +84,7 @@ public class ShopController {
         shop.addProduct(product);
         shopRepository.save(shop);
         model.addAttribute("shop", shop);
+        model.addAttribute("product", new Product());
 
         return "shopManager";
     }

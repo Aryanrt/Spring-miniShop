@@ -21,23 +21,23 @@
             <div>
                 <div>
                     Name: <input type="text" th:field="*{name}" />
-                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error: </td>
+                    <p> <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error: </td></p>
                     <!--<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td> -->
                 </div>
                 <div>
                     Category: <select th:field="*{category}">
-                    <option th:each="colorOpt : ${T(team24soft.minishopify.models.Category).values()}"
-                            th:value="${colorOpt}" th:text="${colorOpt}"></option>
+                    <p><option th:each="colorOpt : ${T(team24soft.minishopify.models.Category).values()}"
+                               th:value="${colorOpt}" th:text="${colorOpt}"></option></p>
                 </select>
                 </div>
                 <div>
-                    Description: <input type="text" th:field="*{description}" />
+                    <p>Description: <input type="text" th:field="*{description}" /></p>>
                 </div>
                 <div>
                     <input hidden th:name="userId" th:value="${user.id}"/>
                 </div>
                 <div>
-                    <input type="submit" value="Create Store"/>
+                    <p><input type="submit" value="Create Store"/></p>
                 </div>
             </div>
 
