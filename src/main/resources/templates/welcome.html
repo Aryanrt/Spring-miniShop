@@ -15,13 +15,14 @@
         <input  type="submit" value="Go Shopping" />
     </form>
 
-
+    <br>
 
     <form action="/goManaging"  method="get">
         <input hidden th:name="userId" th:value="${user.id}"/>
         <input  type="submit" value="Create or Manage Your Store" />
     </form>
 
+    <br>
 
     <div class="button sign-out">
         <form action="/signOut"  method="get">
