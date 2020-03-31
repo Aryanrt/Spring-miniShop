@@ -88,26 +88,28 @@ public class CartController {
 
             User user = userRepository.findById(userId);
             model.addAttribute("user", user);
+            //Shop shop = (Shop) model.getAttribute("shop");
 
             Cart cart = cartRepository.findAll().iterator().next();
+            Product p = null;
 
-
-            Shop shop = shopRepository.findByName(name);
-            //cart.contents.remove(productRepository.findByTitle(shop))
-            //for(Prodcart.contents.keySet())
-            for (Product product : shop.getProducts()) {
-                if (product.getTitle().equalsIgnoreCase(title)) {
-                    productRepository.delete(product);
+            for(Product product : shopRepository.findByName(name). getProducts())
+            {
+                if(product.getTitle().equalsIgnoreCase(title))
+                {
+                    //System.out.println("hererererer" +cart.contents.get(product) +" "+ prd);
+                    //productRepository.delete(product);
                     product.setQuantity(product.getQuantity()+ cart.contents.get(product));
                     cart.contents.remove(product);
                     //cart.contents.put(product, (int) Math.min(number, product.getQuantity()));
                     cartRepository.save(cart);
                     productRepository.save(product);
+                    //shopRepository.
                     break;
                 }
-            }//for
+            }
 
-            model.addAttribute("shop", shop);
+            //model.addAttribute("shop", shop);
             model.addAttribute("cart", cart);
             return "cart";
 
@@ -131,8 +133,7 @@ public class CartController {
 
         model.addAttribute("name", name);
         model.addAttribute("cart", cart);
-        //model.addAttribute("cart", cart);
-        //model.addAttribute("user", user);
+
 
         return "cart";
     }
@@ -151,10 +152,7 @@ public class CartController {
             .getQuantity() - cart.contents.get(product));
         }
 
-        //productRepository.findByTitle()
         cartRepository.delete(cart);
-        //model.addAttribute("cart", cart);
-
         return "purchaseConfirmed";
     }
 
