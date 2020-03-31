@@ -48,10 +48,10 @@ public class UserController {
 
     @GetMapping("/shop")
     public String getShop(@RequestParam(name="userId", required = true) long userId,
-                          @RequestParam(name="id",required = false,defaultValue = "-1") long shopID,
+                          @RequestParam(name="shopName") String shopName,
                           Model model) {
 
-        Shop shop = shopRepository.findById(shopID);
+        Shop shop = shopRepository.findByName(shopName);
         User user = userRepository.findById(userId);
 
         model.addAttribute("user", user);

@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Shop {
-
+    @Id
     @NotNull
     @Size(min=2, max=30)
     public String name; //Name of the Shop
@@ -18,10 +18,6 @@ public class Shop {
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     public List<Product> products;
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    public Long id;
 
     protected Shop(){}
 
@@ -53,14 +49,6 @@ public class Shop {
 
     public void setProducts(List<Product> products) {
         this.products = products;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public void addProduct(Product product){

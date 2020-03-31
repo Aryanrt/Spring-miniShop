@@ -17,11 +17,9 @@
     <section>
         <h1 th:text = "'Welcome to your store ' +${shop.name}"></h1>
 
-        <p>Your shop id is: <span th:text="${shop.id}"></span></p>
-
         <h3>Add item</h3>
-        <form action="#" th:action="@{/addItem}"  method="get">
-            <input type="hidden" name="id" th:value="${shop.id}"/>
+        <form action="#" th:action="@{/addItem}"  method="post">
+            <input type="hidden" name="shopName" th:value="${shop.name}"/>
             <p>Product name: <input th:name="name"/></p>
             <p>Product description: <input th:name="description"/></p>
             <p>Product price :<input th:name="price"/></p>

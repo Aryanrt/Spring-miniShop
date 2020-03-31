@@ -51,20 +51,20 @@ public class ShopController {
 
 
     @GetMapping("/getManagerShop")
-    public String getManagerShop(@RequestParam(name="id", required = false, defaultValue = "1") long id,
+    public String getManagerShop(@RequestParam(name="shopName") String shopName,
                                  @RequestParam(name="userId", required = true) long userId, Model model){
 
         User user = userRepository.findById(userId);
         model.addAttribute("user", user);
-        Shop shop = shopRepository.findById(id);
+        Shop shop = shopRepository.findByName(shopName);
 
         model.addAttribute("shop", shop);
 
         return "shopManager";
     }
 
-    @GetMapping ("/addItem")
-    public String getItems(@RequestParam(name="id", required = true) long id,
+    @PostMapping ("/addItem")
+    public String getItems(@RequestParam(name="shopName", required = true) String shopName,
                            @RequestParam(name="name", required = true) String name,
                            @RequestParam(name="description", required = false,defaultValue = "") String  description,
                            @RequestParam(name="price", required = false, defaultValue = "0") float price,
@@ -80,7 +80,7 @@ public class ShopController {
 
        // product.setInventoryNumber(inventory);
 
-        Shop shop = shopRepository.findById(id);
+        Shop shop = shopRepository.findByName(shopName);
 
         productRepository.save(product);
 
