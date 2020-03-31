@@ -16,9 +16,9 @@ public class Product {
 
     private String description; //description of the product
 
-    @DecimalMin(value="1")
+    @DecimalMin(value="0")
     private long quantity; //Quantity of the product
-    @DecimalMin(value="1")
+    @DecimalMin(value="0")
     private float price; //price of the product
 
 

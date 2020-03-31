@@ -143,6 +143,15 @@ public class CartController {
         model.addAttribute("user", user);
 
         Cart cart = cartRepository.findAll().iterator().next();
+
+        //update the productrepository with new contents
+        for(Product product: cart.contents.keySet())
+        {
+            productRepository.findByTitle(product.getTitle()).setQuantity(productRepository.findByTitle(product.getTitle())
+            .getQuantity() - cart.contents.get(product));
+        }
+
+        //productRepository.findByTitle()
         cartRepository.delete(cart);
         //model.addAttribute("cart", cart);
 
