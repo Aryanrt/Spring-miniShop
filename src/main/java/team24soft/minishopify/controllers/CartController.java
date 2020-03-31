@@ -49,33 +49,29 @@ public class CartController {
 
         Shop shop = shopRepository.findByName(name);
 
-        //shop.getProducts().
         for( Product product: shop.getProducts()) {
-            System.out.println(product.getTitle());
             if (product.getTitle().equals(title)) {
                 boolean alreadyInCart = false;
-                for(Product p : cart.products)
+                for(Product p : cart.contents.keySet())
                 {
                     //if product is already in the cart, just add up the quantities
                     if(p.getId() == product.getId())
                     {
                         cartRepository.delete(cart);
-                        cart.removeProduct(p);
-                        p.setQuantity(p.getQuantity()+ number);
-                        cart.addProduct(p);
+                        cart.contents.put(p, (int) Math.min(cart.contents.get(p)+number, product.getQuantity()));
                         cartRepository.save(cart);
-                        System.out.println("added 2");
                         alreadyInCart = true;
                         break;
                     }
                 }
                 if(alreadyInCart)
                     break;
-                product.setQuantity(number);
-                cart.addProduct(product);
-                System.out.println("1111111");
+                System.out.println(title+" "+  productRepository.findByTitle(title).getPrice() + " "+
+                        Math.min(number,productRepository.findByTitle(title).getQuantity()) );
+
+                cart.contents.put(productRepository.findByTitle(title), (int) Math.min(number,productRepository.
+                        findByTitle(title).getQuantity()));
                 cartRepository.save(cart);
-                System.out.println("added");
                 break;
             }
         }

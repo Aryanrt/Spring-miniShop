@@ -26,12 +26,12 @@
                 </div>
                 <div>
                     Category: <select th:field="*{category}">
-                            <p><option th:each="colorOpt : ${T(team24soft.minishopify.models.Category).values()}"
-                              th:value="${colorOpt}" th:text="${colorOpt}"></option></p>
-                        </select>
+                    <p><option th:each="colorOpt : ${T(team24soft.minishopify.models.Category).values()}"
+                               th:value="${colorOpt}" th:text="${colorOpt}"></option></p>
+                </select>
                 </div>
                 <div>
-                    <p>Description: <input type="text" th:field="*{description}" /></p>>
+                    <p>Description: <input type="text" th:field="*{description}" /></p>
                 </div>
                 <div>
                     <input hidden th:name="userId" th:value="${user.id}"/>
