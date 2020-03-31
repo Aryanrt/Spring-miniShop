@@ -22,7 +22,7 @@
             </tr>
             </thead>
             <tbody >
-            <tr class="row-body" th:each="product: ${cart.products}">
+            <tr class="row-body" th:each="product: ${cart.contents.keySet()}">
                 <form  action="#" th:action="@{/removeFromCart}" method="get">
                     <input hidden th:name="title" th:value="${product.title}"/>
                     <input hidden th:name="name" th:value="${name}"/>
@@ -30,7 +30,7 @@
                     <td class ="cell-body" th:text="${product.title}"></td>
                     <td class ="cell-body" th:text="${product.description}"></td>
                     <td class ="cell-body" th:text="${product.price}"></td>
-                    <td class ="cell-body" th:text="${product.quantity}"></td>
+                    <td class ="cell-body" th:text="${cart.contents.get(product)}"></td>
                     <td class ="cell-body"><input class="button-cart" type="submit" value="Remove from Cart" /></td>
                 </form>
             </tr>

@@ -1,6 +1,6 @@
 package team24soft.minishopify.models;
 
-import javafx.util.Pair;
+//import javafx.util.Pair;
 
 import javax.persistence.*;
 import java.util.ArrayList;
