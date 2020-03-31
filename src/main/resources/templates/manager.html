@@ -26,9 +26,9 @@
                 </div>
                 <div>
                     Category: <select th:field="*{category}">
-                            <p><option th:each="colorOpt : ${T(team24soft.minishopify.models.Category).values()}"
-                              th:value="${colorOpt}" th:text="${colorOpt}"></option></p>
-                        </select>
+                    <p><option th:each="colorOpt : ${T(team24soft.minishopify.models.Category).values()}"
+                               th:value="${colorOpt}" th:text="${colorOpt}"></option></p>
+                </select>
                 </div>
                 <div>
                     <p>Description: <input type="text" th:field="*{description}" /></p>>
