@@ -9,12 +9,12 @@ public class ShopTest {
     Shop s1;
     Shop s2;
     String name;
-    String category;
+    Category category;
 
     @Before
     public void setUp() throws Exception {
         name = "Coca";
-        category = "Soda/Pop";
+        category = Category.Drinks;
 
         s1 = new Shop(name, category);
         s2 = new Shop();

@@ -5,14 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import team24soft.minishopify.models.Category;
 import team24soft.minishopify.models.Shop;
 import team24soft.minishopify.models.User;
-import team24soft.minishopify.repositories.CartRepository;
-import team24soft.minishopify.repositories.ProductRepository;
-import team24soft.minishopify.repositories.ShopRepository;
-import team24soft.minishopify.repositories.UserRepository;
+import team24soft.minishopify.repositories.*;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
 @Controller()
@@ -31,13 +30,24 @@ public class UserController {
     public String shopList(@RequestParam(name="userId", required = true) long userId,
                            @RequestParam(name="filter",required = false,defaultValue = "") String filter,
                            Model model){
-        List<Shop> shops = new ArrayList<Shop>();
 
-        shops.addAll(shopRepository.findByCategoryOrName(filter,filter));
+        List<Shop> shops = new ArrayList<Shop>();
 
         if(filter.equals("")){
             shops.addAll((List<Shop>)shopRepository.findAll());
         }
+        else {
+            if(shopRepository.findByName(filter) != null)
+                shops.add(shopRepository.findByName(filter));
+
+            for (Shop shop : shopRepository.findAll())
+                if (shop.getCategory().toString().equalsIgnoreCase(filter) )
+                    shops.add(shop);
+
+        }
+        for(Shop s: shops)
+            System.out.println("%%%" + s.getName());
+
 
         User user = userRepository.findById(userId);
 
@@ -67,7 +77,7 @@ public class UserController {
 
         User user = userRepository.findById(userId);
         model.addAttribute("user", user);
-        model.addAttribute("shop", new Shop("",""));
+        model.addAttribute("shop", new Shop("", Category.Books));
 
         return "manager";
     }

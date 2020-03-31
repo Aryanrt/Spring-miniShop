@@ -10,7 +10,7 @@ public class CartTest {
     Product p1;
     Cart cart;
     String name;
-    String category;
+    Category category;
     String title;
     String description;
     long price;
@@ -19,7 +19,7 @@ public class CartTest {
     @Before
     public void setUp() throws Exception {
         name = "Coca";
-        category = "Soda/Pop";
+        category = Category.Drinks;
         title = "sprite";
         description ="tasty";
         price = 2;
