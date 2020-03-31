@@ -33,7 +33,7 @@ public class CartController {
                             @RequestParam(name="number", required = true) int number,
                             @RequestParam(name="userId", required = true) long userId, Model model) {
 
-       User user = userRepository.findById(userId);
+        User user = userRepository.findById(userId);
         model.addAttribute("user", user);
         //boolean flag =false;
 
@@ -107,6 +107,7 @@ public class CartController {
                 }
             }//for
 
+            model.addAttribute("shop", shop);
             model.addAttribute("cart", cart);
             return "cart";
 
