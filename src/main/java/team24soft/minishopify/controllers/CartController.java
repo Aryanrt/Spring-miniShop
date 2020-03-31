@@ -72,48 +72,48 @@ public class CartController {
                 }//for
             }//if
         }//for
-            model.addAttribute("shop", shop);
+        model.addAttribute("shop", shop);
 
-            //model.addAttribute("shop", shop);
-            return "shopUser";
+        //model.addAttribute("shop", shop);
+        return "shopUser";
 
-            //return "shopUser";
+        //return "shopUser";
     }
 
 
-        @GetMapping("/removeFromCart")
-        public String removeFromCart(@RequestParam(name="title", required = true) String title,
-                                     @RequestParam(name="name", required = true) String name,
-                                     @RequestParam(name="userId", required = true) long userId, Model model){
+    @GetMapping("/removeFromCart")
+    public String removeFromCart(@RequestParam(name="title", required = true) String title,
+                                 @RequestParam(name="name", required = true) String name,
+                                 @RequestParam(name="userId", required = true) long userId, Model model){
 
-            User user = userRepository.findById(userId);
-            model.addAttribute("user", user);
-            //Shop shop = (Shop) model.getAttribute("shop");
+        User user = userRepository.findById(userId);
+        model.addAttribute("user", user);
+        //Shop shop = (Shop) model.getAttribute("shop");
 
-            Cart cart = cartRepository.findAll().iterator().next();
-            Product p = null;
+        Cart cart = cartRepository.findAll().iterator().next();
+        Product p = null;
 
-            for(Product product : shopRepository.findByName(name). getProducts())
+        for(Product product : shopRepository.findByName(name). getProducts())
+        {
+            if(product.getTitle().equalsIgnoreCase(title))
             {
-                if(product.getTitle().equalsIgnoreCase(title))
-                {
-                    //System.out.println("hererererer" +cart.contents.get(product) +" "+ prd);
-                    //productRepository.delete(product);
-                    product.setQuantity(product.getQuantity()+ cart.contents.get(product));
-                    cart.contents.remove(product);
-                    //cart.contents.put(product, (int) Math.min(number, product.getQuantity()));
-                    cartRepository.save(cart);
-                    productRepository.save(product);
-                    //shopRepository.
-                    break;
-                }
+                //System.out.println("hererererer" +cart.contents.get(product) +" "+ prd);
+                //productRepository.delete(product);
+                product.setQuantity(product.getQuantity()+ cart.contents.get(product));
+                cart.contents.remove(product);
+                //cart.contents.put(product, (int) Math.min(number, product.getQuantity()));
+                cartRepository.save(cart);
+                productRepository.save(product);
+                //shopRepository.
+                break;
             }
-
-            //model.addAttribute("shop", shop);
-            model.addAttribute("cart", cart);
-            return "cart";
-
         }
+
+        //model.addAttribute("shop", shop);
+        model.addAttribute("cart", cart);
+        return "cart";
+
+    }
 
 
     @GetMapping("/viewCart")
@@ -149,7 +149,7 @@ public class CartController {
         for(Product product: cart.contents.keySet())
         {
             productRepository.findByTitle(product.getTitle()).setQuantity(productRepository.findByTitle(product.getTitle())
-            .getQuantity() - cart.contents.get(product));
+                    .getQuantity() - cart.contents.get(product));
         }
 
         cartRepository.delete(cart);
