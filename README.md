@@ -1,12 +1,5 @@
-# Mini-Shopify
-[![Build Status](https://travis-ci.com/JoseFrancoJimenez/miniShopify.svg?branch=master)](https://travis-ci.com/JoseFrancoJimenez/miniShopify)
-
-This is the group project repo for “Team24” Mini-Shopify.
-The goal of this project is to provide a simple implementation of shopify.
-
-Description of shopify can be found in:
-
-https://www.shopify.ca/
+## HEROKU SITE
+https://spring-mini-shop.herokuapp.com/
 
 ## Prerequisites
 
@@ -23,8 +16,6 @@ Use maven test to run the unit tests
 mvn -B test
 ```
 
-Continuous Integration is provided via Travis-CI
-
 ## Start the app manually
 
 Import this project into Intellij, open MiniShopifyApplication.java, click run. 
@@ -38,29 +29,6 @@ After running the app you can go to http://localhost:8081/ to see the app runnin
 ## UML
 
 UML diagrams are in the folder named UML
-
-## HEROKU SITE
-https://team24minishopify.herokuapp.com/
-
-## Milestone 1:
-
-* Setup the project
-* Created basic classes
-* Added basic functionallity to write and read data
-
-## Milestone 2:
-
-* Added a simple login feature
-* Improved the look and feel
-* Added missing tests
-* Added more functionality:
-   -users can register and log in/out
-   -users can create stores 
-   -users can filter stores by name or category 
-   -users can add products to their carts)
-
-## TODOs:
-*Use Jhipster (Not a must for the project, but it is a must for the presentation)
 
 ## Authors
 
