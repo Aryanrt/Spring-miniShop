@@ -1,8 +1,0 @@
-language: java
-jdk:
-  - openjdk8
-
-deploy:
-  provider: heroku
-  api-key: 19726be2-66a3-4816-8b83-4ca279e11ab3
-  app: team24minishopify
