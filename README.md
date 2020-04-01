@@ -1,5 +1,5 @@
-## HEROKU SITE
-https://spring-mini-shop.herokuapp.com/
+## Heroku:
+## https://spring-mini-shop.herokuapp.com/
 
 ## Prerequisites
 
