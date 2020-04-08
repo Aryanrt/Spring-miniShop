@@ -1,7 +1,7 @@
-spring\minishop\controllers\TestingMinishopifyApplication.class
-spring\minishop\controllers\ControllerTests.class
-spring\minishop\models\UserTest.class
-spring\minishop\MinishopifyApplicationTests.class
-spring\minishop\models\CartTest.class
-spring\minishop\models\ProductTest.class
-spring\minishop\models\ShopTest.class
+spring\minishopify\controllers\ControllerTests.class
+team24soft\minishopify\controllers\TestingMinishopifyApplication.class
+team24soft\minishopify\models\ProductTest.class
+spring\minishopify\models\CartTest.class
+spring\minishopify\models\ShopTest.class
+spring\minishopify\models\UserTest.class
+team24soft\minishopify\MinishopifyApplicationTests.class

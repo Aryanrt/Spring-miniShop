@@ -10,10 +10,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>aryanrt</groupId>
-    <artifactId>miniShop</artifactId>
+    <groupId>spring</groupId>
+    <artifactId>miniShopify</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>minishop</name>
+    <name>minishopify</name>
 
     <properties>
         <java.version>1.8</java.version>
