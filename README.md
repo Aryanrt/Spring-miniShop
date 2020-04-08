@@ -1,12 +1,9 @@
 # Mini-Shopify
-[![Build Status](https://travis-ci.com/JoseFrancoJimenez/miniShopify.svg?branch=master)](https://travis-ci.com/JoseFrancoJimenez/miniShopify)
-
-This is the group project repo for “Team24” Mini-Shopify.
-The goal of this project is to provide a simple implementation of shopify.
-
+The goal of this project is to provide a simple implementation of shopify using Spring MVC.
 Description of shopify can be found in:
 
-https://www.shopify.ca/
+## HEROKU SITE
+https://spring-mini-shop.herokuapp.com/
 
 ## Prerequisites
 
@@ -29,7 +26,7 @@ Continuous Integration is provided via Travis-CI
 
 Import this project into Intellij, open MiniShopifyApplication.java, click run. 
 
-After running the app you can go to http://localhost:8081/ to see the app running.
+After running the app you can go to http://localhost:8080/ to see the app running.
 
 ## Built With
 
@@ -38,9 +35,6 @@ After running the app you can go to http://localhost:8081/ to see the app runnin
 ## UML
 
 UML diagrams are in the folder named UML
-
-## HEROKU SITE
-https://team24minishopify.herokuapp.com/
 
 ## Milestone 1:
 
@@ -67,9 +61,3 @@ https://team24minishopify.herokuapp.com/
 * attached car to user 
 * a major bug was fixed (stores would not run out of stuck) 
 
-
-## Authors
-
-* **Aryan Rashidi-Tabrizi** - [Aryanrt](https://github.com/Aryanrt)
-* **Hassan Yusuf** - [almasrur](https://github.com/almasrur)
-* **Jose Franco** - [JoseFrancoJimenez](https://github.com/JoseFrancoJimenez)
