@@ -1,6 +1,5 @@
 # Mini-Shopify
 The goal of this project is to provide a simple implementation of shopify using Spring MVC.
-Description of shopify can be found in:
 
 ## HEROKU SITE
 https://spring-mini-shop.herokuapp.com/
